@@ -58,7 +58,7 @@ coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-t
 .pay-close{background:none;border:0;color:#8993a4;font-size:13px;margin-top:8px;cursor:pointer}
 .back-btn{background:none;border:0;color:var(--blue);font-weight:700;font-size:14px;cursor:pointer;padding:8px 0;margin-bottom:6px;display:inline-flex;align-items:center;gap:4px}
 .back-btn:hover{text-decoration:underline}
-#chatFab{position:fixed;bottom:22px;right:22px;background:var(--blue);color:#fff;border:0;border-radius:50px;padding:14px 20px;font-weight:700;box-shadow:0 8px 24px #1769e055;cursor:pointer;z-index:50;font-size:14px}
+#chatFab{position:fixed;bottom:22px;left:22px;background:var(--blue);color:#fff;border:0;border-radius:50px;padding:14px 20px;font-weight:700;box-shadow:0 8px 24px #1769e055;cursor:pointer;z-index:50;font-size:14px}
 #chatPanel{position:fixed;bottom:90px;right:22px;width:360px;max-width:92vw;height:480px;background:#fff;border-radius:16px;box-shadow:0 12px 40px #00000030;display:none;flex-direction:column;z-index:50;overflow:hidden;border:1px solid var(--line)}
 #chatPanel.open{display:flex}
 .chat-head{background:var(--blue);color:#fff;padding:14px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
@@ -77,7 +77,7 @@ coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-t
 .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
 @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
 .ai-orb{position:absolute;width:58px;height:58px;right:14px;top:-30px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#9ec4ff 22%,#1769e0 55%,#081a3d);box-shadow:0 14px 28px #1769e077,inset -8px -10px 16px #0006,inset 7px 7px 14px #fff8;transform:rotateX(20deg);animation:floatOrb 3s ease-in-out infinite}#chatPanel{position:fixed}@keyframes floatOrb{50%{transform:translateY(-7px) rotateX(20deg) rotateY(25deg)}}
-@media(max-width:750px){.grid,.row{grid-template-columns:1fr}.hero h1{font-size:36px}nav{display:none}.header-actions{margin-left:auto}#chatPanel{width:92vw;right:4vw;height:60vh}}
+@media(max-width:750px){.grid,.row{grid-template-columns:1fr}.hero h1{font-size:36px}nav{display:none}.header-actions{margin-left:auto}#chatPanel{width:92vw;right:4vw;height:60vh}#chatFab{left:16px;bottom:16px}}
 .stock-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.stock-chat{min-height:330px;display:flex;flex-direction:column}.stock-chat-body{flex:1;min-height:190px;max-height:380px;overflow:auto;background:#f7f9fc;border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}.stock-input-row{display:flex;gap:8px}.stock-input-row input{margin:0}.stock-chip{display:inline-block;padding:6px 10px;border:1px solid #cfe0ff;background:#f8fbff;color:var(--blue);border-radius:999px;font-size:12px;margin:4px;cursor:pointer}.stock-table td,.stock-table th{vertical-align:top}.stock-disclaimer{font-size:12px;color:#765900;line-height:1.5;background:#fff7df;border-radius:10px;padding:12px;margin-top:12px}@media(max-width:750px){.stock-grid{grid-template-columns:1fr}}
 
 /* Educational Market Simulator */
@@ -86,12 +86,18 @@ coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-t
 @media(max-width:750px){.employee-grid{grid-template-columns:1fr}}
 .rdp-card{margin-top:22px}.rdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.rdp-form{display:grid;gap:11px}.rdp-form label{font-weight:700;font-size:13px}.rdp-form input{padding:12px;border:1px solid var(--line);border-radius:9px;font:inherit}.rdp-actions{display:flex;gap:10px;flex-wrap:wrap}.rdp-note{font-size:12px;color:var(--muted);line-height:1.55}.rdp-preview{background:#f7fbff;border:1px solid #dbeafe;border-radius:12px;padding:16px;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;min-height:180px;overflow:auto}@media(max-width:750px){.rdp-grid{grid-template-columns:1fr}}
 .market-card{margin-top:22px}.market-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.market-form{display:grid;gap:10px}.market-form label{font-weight:700;font-size:13px}.market-form input,.market-form select{padding:12px;border:1px solid var(--line);border-radius:9px;font:inherit}.market-result{background:#f7fbff;border:1px solid #dbeafe;border-radius:12px;padding:16px}.market-note{font-size:12px;color:var(--muted);line-height:1.5}.risk-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#eef2ff;font-size:12px;font-weight:700}@media(max-width:750px){.market-grid{grid-template-columns:1fr}}
-</style><script>window.PERSONAL_CA_API=window.PERSONAL_CA_API||"";const API_BASE=window.PERSONAL_CA_API.replace(/\/$/,"");</script><script src="https://accounts.google.com/gsi/client" async defer></script>
+</style><script>window.PERSONAL_CA_API=window.PERSONAL_CA_API||"";const API_BASE=window.PERSONAL_CA_API.replace(/\/$/,"");</script>
+<script>
+/* Personal CA client state: email sign-in is intentionally local/no-OTP. */
+let currentUser = null;
+let pendingAI = null;
+const LOCAL_ACCOUNT_KEY = "personal_ca_local_account_v2";
+</script><script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 <header><div class="more-wrap"><button class="more-btn" onclick="toggleStatusMenu()" aria-label="Open status menu">⋮</button><div id="statusMenu" class="status-menu"><h3 style="margin:0 0 8px">Account & system status</h3><div id="statusMenuContent"><div class="status-row"><b>Loading status…</b><span>Please wait.</span></div></div><button class="btn secondary" style="width:100%;margin-top:10px" onclick="show('updates');toggleStatusMenu()">Open Update Center</button><button class="btn" style="width:100%;margin-top:10px" onclick="openAIAccess('stocks');toggleStatusMenu()">📈 Open Stocks AI</button><button class="btn secondary" style="width:100%;margin-top:10px" onclick="show('rdp');toggleStatusMenuClose()">🖥️ Remote Desktop (RDP)</button></div></div><div class="logo">Personal <span>CA</span> <small style="font-size:11px;color:#667085;font-weight:700">powered by Nivara AI</small></div><nav>
 <button onclick="show('home')">Home</button>
-<button onclick="show('app')">Tax Assistant</button>
+<button onclick="ensureTaxProfile()">Tax Assistant</button>
 <button onclick="show('pricing')">Free</button>
 <button onclick="show('rules')">Rules &amp; Regulations</button>
 <button onclick="show('updates')">Updates</button><button onclick="openAIAccess('stocks')">Stocks AI</button><button onclick="show('rdp')">RDP</button>
@@ -100,7 +106,7 @@ coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-t
 <section id="home">
 <div class="hero"><h1>Your <span>AI Personal CA</span> for Indian tax planning.</h1>
 <p>Upload financial documents, get a real tax computation under both regimes, chat with an AI grounded in the current Income Tax Act rules, and see exactly which government schemes apply to you. Built to bring AI-assisted tax planning and personal finance guidance into one place.</p>
-<button class="btn" onclick="show('app')">Start Analysis →</button></div>
+<button class="btn" onclick="ensureTaxProfile()">Start Analysis →</button></div>
 <div class="wrap"><h2 class="center">Everything a personal CA does for you, in one place</h2>
 <div class="grid">
 <div class="card feature"><h3>📄 File Scanner</h3><p>Upload multiple PDFs, images or spreadsheets and keep them together for review.</p></div>
@@ -122,7 +128,7 @@ coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-t
 <div class="email-login-box">
 <label for="emailSignIn">Email address</label>
 <input id="emailSignIn" type="email" autocomplete="email" placeholder="you@example.com">
-<button class="btn secondary" style="margin-top:8px" onclick="emailSignIn()">Continue with Email</button>
+<button type="button" class="btn secondary" style="margin-top:8px" onclick="emailSignIn()">Continue with Email</button>
 <p style="font-size:12px;color:#7a8492;margin:8px 0 0">Quick project sign-in: no OTP and no email is sent. This is not identity verification.</p>
 </div>
 <div id="authStatus" class="note" style="display:none"></div>
@@ -231,7 +237,7 @@ coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-t
 <li>Rules &amp; Update Center</li>
 <li>Remote Desktop (RDP) launcher</li>
 </ul>
-<button class="btn" onclick="show('app')">Sign In &amp; Use Free</button>
+<button class="btn" onclick="showLogin('nivara')">Sign In &amp; Use Free</button>
 </div>
 </div></section>
 
@@ -322,7 +328,7 @@ coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-t
 <div class="card"><h3>🇮🇳 Income Tax Department</h3><p style="color:var(--muted);font-size:14px">Use the official Income Tax Department site for current tax rates, deductions, forms and notifications.</p><a href="https://www.incometax.gov.in/" target="_blank" rel="noopener" class="btn secondary" style="display:inline-block;text-decoration:none">Open Income Tax Portal</a></div>
 <div class="card"><h3>📅 Annual update</h3><p style="color:var(--muted);font-size:14px">The website automatically detects when a new tax year starts and prompts for a verified rules-package update. The calculator never silently invents new rates.</p></div>
 </div>
-<div class="card" style="margin-top:18px"><h3>📚 Law &amp; compliance coverage</h3><p style="color:var(--muted);font-size:14px">The update engine is designed to track important Indian tax and compliance areas. It should activate a rule only after an official notification, Act, Rule, circular, order or other authoritative source is verified.</p><div class="coverage-grid"><div class="coverage-item"><b>Income Tax</b><span>Tax slabs, rebates, deductions, exemptions, residential status, capital gains and filing provisions.</span></div><div class="coverage-item"><b>TDS / TCS</b><span>Withholding and collection rates, thresholds, forms, due dates and notified changes.</span></div><div class="coverage-item"><b>ITR & Filing</b><span>Return forms, filing deadlines, revised/updated returns, notices and filing procedures.</span></div><div class="coverage-item"><b>GST</b><span>GST registration, rates, returns, input tax credit and other taxpayer-facing updates where applicable.</span></div><div class="coverage-item"><b>Capital Gains</b><span>Rules for listed/unlisted assets, property, securities, exemptions and rate changes.</span></div><div class="coverage-item"><b>Tax Compliance</b><span>Advance tax, interest, penalties, refunds, notices, assessments and other compliance rules.</span></div><div class="coverage-item"><b>Budget & Finance Acts</b><span>New provisions and amendments announced through Finance Acts and Union Budgets.</span></div><div class="coverage-item"><b>CBDT Notifications</b><span>Circulars, notifications, orders and clarifications that affect tax computation or compliance.</span></div><div class="coverage-item"><b>ICAI Guidance</b><span>ICAI technical guidance, Direct Taxes Committee updates and educational material for cross-checking.</span></div></div></div>
+<div class="card" style="margin-top:18px"><h3>🏛️ Official Income-tax Law Library</h3><p style="color:var(--muted);font-size:14px">Nivara uses an official-source coverage index for the current Indian income-tax framework. The Income-tax Act, 2025 has 536 sections and 16 schedules; the Income-tax Rules, 2026 have 333 rules and 190 forms. Earlier tax years and transitional proceedings can require the 1961 Act/1962 Rules.</p><div class="coverage-grid"><div class="coverage-item"><b>Act 2025</b><span>Sections 1–536 and Schedules 1–16 indexed.</span></div><div class="coverage-item"><b>Rules 2026</b><span>Rules 1–333 and Forms 1–190 indexed.</span></div><div class="coverage-item"><b>Legacy 1961</b><span>Earlier tax years and transitional proceedings routed to the old framework where applicable.</span></div><div class="coverage-item"><b>Official source</b><span><a href="https://www.incometax.gov.in/iec/foportal/newdownloads/income-tax-act-2025" target="_blank" rel="noopener">Income Tax Department — Income-tax Act 2025</a></span></div></div><div class="note" style="margin-top:12px"><b>Important:</b> The catalog is an index/source-router, not a reproduction of the statute. Nivara must not invent statutory wording when exact official text is not available.</div></div><div class="card" style="margin-top:18px"><h3>📚 Law &amp; compliance coverage</h3><p style="color:var(--muted);font-size:14px">The update engine is designed to track important Indian tax and compliance areas. It should activate a rule only after an official notification, Act, Rule, circular, order or other authoritative source is verified.</p><div class="coverage-grid"><div class="coverage-item"><b>Income Tax</b><span>Tax slabs, rebates, deductions, exemptions, residential status, capital gains and filing provisions.</span></div><div class="coverage-item"><b>TDS / TCS</b><span>Withholding and collection rates, thresholds, forms, due dates and notified changes.</span></div><div class="coverage-item"><b>ITR & Filing</b><span>Return forms, filing deadlines, revised/updated returns, notices and filing procedures.</span></div><div class="coverage-item"><b>GST</b><span>GST registration, rates, returns, input tax credit and other taxpayer-facing updates where applicable.</span></div><div class="coverage-item"><b>Capital Gains</b><span>Rules for listed/unlisted assets, property, securities, exemptions and rate changes.</span></div><div class="coverage-item"><b>Tax Compliance</b><span>Advance tax, interest, penalties, refunds, notices, assessments and other compliance rules.</span></div><div class="coverage-item"><b>Budget & Finance Acts</b><span>New provisions and amendments announced through Finance Acts and Union Budgets.</span></div><div class="coverage-item"><b>CBDT Notifications</b><span>Circulars, notifications, orders and clarifications that affect tax computation or compliance.</span></div><div class="coverage-item"><b>ICAI Guidance</b><span>ICAI technical guidance, Direct Taxes Committee updates and educational material for cross-checking.</span></div></div></div>
 <div class="note" style="margin-top:18px"><b>Important:</b> The application now has a server-side current-source snapshot. For production, connect this endpoint to a signed, reviewed rules manifest and require human verification before activating any legal-rule change. ICAI material is treated as professional guidance, while statutory rules are sourced from government authorities.</div>
 </div></section>
 
@@ -378,7 +384,7 @@ coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-t
     <h2>Ready to use Personal CA?</h2>
     <p style="color:var(--muted);font-size:16px">Sign in to use Personal CA for free.</p>
     <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px">
-      <button class="btn secondary" onclick="show('app')">Sign In</button>
+      <button class="btn secondary" onclick="showLogin('nivara')">Sign In</button>
       <button class="btn" onclick="show('pricing')">Use Personal CA Free</button>
     </div>
   </div>
@@ -456,99 +462,189 @@ function clearRDP(){
 
 
 async function loadGoogleButton(){
+  const box=document.getElementById('googleButton');
+  if(!box) return;
   try{
-    const cfg=await fetch(API_BASE+'/api/config').then(r=>r.json());
-    if(!cfg.googleClientId){ authMessage('Google Sign-In is not configured yet. Add GOOGLE_CLIENT_ID to the server .env file.'); return; }
-    if(!window.google){ authMessage('Google Sign-In library did not load. Check your internet connection and try again.'); return; }
+    const r=await fetch(API_BASE+'/api/config',{cache:'no-store'});
+    if(!r.ok) throw new Error('config unavailable');
+    const cfg=await r.json();
+    if(!cfg.googleClientId){
+      box.innerHTML='<div class="note">Google Sign-In is not configured on the backend yet. You can still use Email Sign-In below.</div>';
+      return;
+    }
+    if(!window.google){
+      box.innerHTML='<div class="note">Google Sign-In is loading. Email Sign-In is available below.</div>';
+      return;
+    }
     google.accounts.id.initialize({client_id:cfg.googleClientId,callback:handleGoogleCredential,auto_select:false});
-    google.accounts.id.renderButton(document.getElementById('googleButton'),{theme:'outline',size:'large',text:'signin_with',shape:'rectangular',width:320});
-  }catch(e){ authMessage('Could not load Google Sign-In. Make sure the Personal CA server is running.'); }
+    google.accounts.id.renderButton(box,{theme:'outline',size:'large',text:'signin_with',shape:'rectangular',width:320});
+  }catch(e){
+    box.innerHTML='<div class="note">Google Sign-In is temporarily unavailable. Use Email Sign-In below — no OTP is sent.</div>';
+  }
 }
 
 async function handleGoogleCredential(response){
   clearAuthError();
   try{
     const r=await fetch(API_BASE+'/api/auth/google',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:response.credential})});
-    const data=await r.json(); if(!r.ok) throw new Error(data.error||'Google sign-in failed.');
-    currentUser=data; authMessage(`Signed in as ${data.name} (${data.email}).`,true);
-    if(data.profileCompleted){ openRequestedAI(); } else { showProfileGate(); }
+    const data=await r.json();
+    if(!r.ok) throw new Error(data.error||'Google sign-in failed.');
+    currentUser=data;
+    localStorage.setItem(LOCAL_ACCOUNT_KEY,JSON.stringify(currentUser));
+    authMessage(`Signed in as ${data.name||data.email}.`,true);
+    openRequestedAI();
   }catch(e){ authError(e.message||'Google sign-in failed.'); }
 }
-let pendingAI = null;
-function closeAIGate(){document.getElementById('aiGateOverlay').classList.remove('open');}
+
+function closeAIGate(){document.getElementById('aiGateOverlay')?.classList.remove('open');}
 function aiName(kind){return kind==='stocks'?'Stocks AI':'Nivara AI';}
-function aiGatePrimaryAction(){
-  closeAIGate();
-  pendingAI = pendingAI || 'stocks';
-  show('app');
-  document.getElementById('login').classList.remove('hidden');
-  document.getElementById('profileGate').classList.add('hidden');
-  document.getElementById('uploader').classList.add('hidden');
-  authMessage(`Please sign in to use ${aiName(pendingAI)} for free.`,false);
+function aiGatePrimaryAction(){closeAIGate(); openAIAccess(pendingAI||'stocks');}
+
+function saveLocalAccount(user){
+  localStorage.setItem(LOCAL_ACCOUNT_KEY,JSON.stringify(user));
+  localStorage.setItem('pcaSignedIn','1');
+}
+function readLocalAccount(){
+  try{return JSON.parse(localStorage.getItem(LOCAL_ACCOUNT_KEY)||'null');}catch(e){return null;}
 }
 
 async function emailSignIn(){
   clearAuthError();
   const input=document.getElementById('emailSignIn');
-  const email=(input.value||'').trim().toLowerCase();
+  const email=(input?.value||'').trim().toLowerCase();
   if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
     authError('Please enter a valid email address.');
+    input?.focus();
     return;
   }
+  const button=document.querySelector('.email-login-box .btn');
+  if(button){button.disabled=true;button.textContent='Signing in…';}
   try{
-    const r=await fetch(API_BASE+'/api/auth/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+    const r=await fetch(API_BASE+'/api/auth/email',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({email})});
     const data=await r.json();
     if(!r.ok) throw new Error(data.error||'Email sign-in failed.');
-    currentUser=data;
-    authMessage(`Signed in as ${data.email}. No OTP was sent.`,true);
-    if(data.profileCompleted){ openRequestedAI(); } else { showProfileGate(); }
-  }catch(e){ authError(e.message||'Email sign-in failed.'); }
+    currentUser={...data,provider:'email_project_signin'};
+    saveLocalAccount(currentUser);
+    authMessage(`Okay — ${email} is signed in. No OTP was sent and no email was sent. You can use Personal CA now.`,true);
+    openRequestedAI();
+  }catch(e){
+    authError('Email sign-in could not reach the Personal CA server. Please make sure the Render backend is Live and the Netlify /api redirect is deployed.');
+  }finally{
+    if(button){button.disabled=false;button.textContent='Continue with Email';}
+  }
+}
+
+function authMessage(message, ok=false){
+  const el=document.getElementById('authStatus');
+  if(!el)return;
+  el.style.display='block';
+  el.className='note'+(ok?' ok':'');
+  el.textContent=message;
+}
+function authError(message){
+  const el=document.getElementById('authError');
+  if(!el)return;
+  el.textContent=message;
+  el.style.display='block';
+}
+function clearAuthError(){
+  const e=document.getElementById('authError'); if(e){e.textContent='';e.style.display='none';}
+}
+
+function showLogin(kind){
+  pendingAI=kind||pendingAI||'nivara';
+  show('app');
+  document.getElementById('login').classList.remove('hidden');
+  document.getElementById('profileGate').classList.add('hidden');
+  document.getElementById('uploader').classList.add('hidden');
+  document.getElementById('review').classList.add('hidden');
+  document.getElementById('st1').classList.add('active');
+  document.getElementById('st2').classList.remove('active');
+  document.getElementById('st3').classList.remove('active');
+  clearAuthError();
+  const status=document.getElementById('authStatus');
+  if(status){status.style.display='block';status.className='note';status.textContent=`Sign in to continue to ${aiName(pendingAI)}. Google or email is available. Email sign-in sends nothing.`;}
+  document.getElementById('emailSignIn')?.focus();
 }
 
 function openAIAccess(kind){
   pendingAI=kind;
-  if(!currentUser){
-    show('app');
-    document.getElementById('login').classList.remove('hidden');
-    document.getElementById('profileGate').classList.add('hidden');
-    document.getElementById('uploader').classList.add('hidden');
-    authMessage(`Please sign in to use ${aiName(kind)} for free.`,false);
-    return;
-  }
-  if(!currentUser.profileCompleted){ showProfileGate(); return; }
+  if(!currentUser){ showLogin(kind); return; }
   openRequestedAI();
 }
+
 function showProfileGate(){
   show('app');
   document.getElementById('login').classList.add('hidden');
   document.getElementById('uploader').classList.add('hidden');
+  document.getElementById('review').classList.add('hidden');
   document.getElementById('profileGate').classList.remove('hidden');
   document.getElementById('profileError').style.display='none';
 }
+
 function openRequestedAI(){
-  const kind=pendingAI||'nivara'; pendingAI=null;
-  if(kind==='stocks'){ show('stocks'); toggleStatusMenuClose(); }
-  else { show('home'); document.getElementById('chatPanel').classList.add('open'); }
+  const kind=pendingAI||'nivara';
+  pendingAI=null;
+  closeAIGate();
+  if(kind==='stocks'){
+    show('stocks');
+    toggleStatusMenuClose();
+  }else{
+    show('home');
+    document.getElementById('chatPanel').classList.add('open');
+  }
 }
-function toggleStatusMenuClose(){const m=document.getElementById('statusMenu');if(m)m.classList.remove('open');}
+
+function saveProfileAndContinue(){
+  if(!currentUser){showLogin(pendingAI||'nivara');return;}
+  const dob=document.getElementById('profileDob')?.value||'';
+  const gender=document.getElementById('profileGender')?.value||'';
+  if(!dob || !gender){
+    const e=document.getElementById('profileError');
+    e.textContent='Please enter your date of birth and select a gender.';
+    e.style.display='block';
+    return;
+  }
+  currentUser.dateOfBirth=dob;
+  currentUser.gender=gender;
+  currentUser.profileCompleted=true;
+  saveLocalAccount(currentUser);
+  fetch(API_BASE+'/api/auth/profile',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({dateOfBirth:dob,gender})}).catch(()=>{});
+  openRequestedAI();
+}
+
+function ensureTaxProfile(){
+  if(currentUser?.profileCompleted){
+    show('app');
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById('profileGate').classList.add('hidden');
+    document.getElementById('review').classList.add('hidden');
+    document.getElementById('uploader').classList.remove('hidden');
+    return;
+  }
+  if(currentUser){showProfileGate();return;}
+  showLogin('nivara');
+}
 
 async function restoreSession(){
   try{
-    const r=await fetch(API_BASE+'/api/auth/me'); const data=await r.json();
-    if(!data.signedIn) return;
-    currentUser=data;
-    if(!data.profileCompleted){ showProfileGate(); return; }
-    document.getElementById('login').classList.add('hidden'); document.getElementById('profileGate').classList.add('hidden'); document.getElementById('uploader').classList.remove('hidden');
-    localStorage.setItem('pcaSignedIn','1');
-  }catch(e){ /* normal when server is unavailable */ }
+    const r=await fetch(API_BASE+'/api/auth/me',{cache:'no-store',credentials:'include'});
+    if(r.ok){
+      const data=await r.json();
+      if(data.signedIn){currentUser=data;saveLocalAccount(currentUser);return;}
+    }
+  }catch(e){}
+  const local=readLocalAccount();
+  if(local) currentUser=local;
 }
 
 async function logoutPersonalCA(){
   await fetch(API_BASE+'/api/auth/logout',{method:'POST'}).catch(()=>{});
-  localStorage.removeItem('pcaSignedIn'); location.reload();
+  currentUser=null;
+  localStorage.removeItem(LOCAL_ACCOUNT_KEY);
+  localStorage.removeItem('pcaSignedIn');
+  location.reload();
 }
-
-
 
 const RULES_ENGINE_VERSION = '2026.09.10';
 const RULES_TAX_YEAR = '2026-27';
@@ -589,7 +685,7 @@ function listFiles(){
   selectedFiles=Array.from(input?.files||[]);
   box.innerHTML=selectedFiles.length ? selectedFiles.map(f=>`<div class="file">${escapeHtml(f.name)} <span class="src">${Math.round(f.size/1024)} KB</span></div>`).join('') : '';
 }
-function review(){ if(!currentUser || !currentUser.profileCompleted){ showProfileGate(); return; } fetch(API_BASE+'/api/logs/event',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event:'analysis_completed',detail:'Personal tax analysis completed'})}).catch(()=>{});
+function review(){ if(!currentUser){ showLogin('nivara'); return; } if(!currentUser.profileCompleted){ showProfileGate(); return; } fetch(API_BASE+'/api/logs/event',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event:'analysis_completed',detail:'Personal tax analysis completed'})}).catch(()=>{});
   const income=Math.max(0,Number(document.getElementById('income').value)||0);
   const age=Number(document.getElementById('age').value)||0;
   const employment=document.getElementById('employment').value;
@@ -697,7 +793,7 @@ async function sendChat(){
   chatHistory.push({role:'user',content:text});
   const typingEl=document.createElement('div'); typingEl.className='typing'; typingEl.innerHTML='<span></span><span></span><span></span>'; body.appendChild(typingEl); body.scrollTop=body.scrollHeight;
   try{
-    const r=await fetch(API_BASE+'/api/ai/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:chatHistory})});
+    const r=await fetch(API_BASE+'/api/ai/chat',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:chatHistory})});
     const data=await r.json(); if(!r.ok) throw new Error(data.error||'AI request failed.');
     typingEl.remove(); const reply=data.reply||'I could not generate an answer.'; body.insertAdjacentHTML('beforeend',`<div class="msg bot">${escapeHtml(reply)}</div>`); chatHistory.push({role:'assistant',content:reply});
   }catch(e){
@@ -712,7 +808,7 @@ async function loadMarketResearch(){
   if(!symbol){box.textContent='Enter a stock symbol or company name first.';return;}
   box.textContent='Asking Gemini for an educational stock study…';
   try{
-    const r=await fetch(API_BASE+'/api/stocks-ai/research',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({symbol})});
+    const r=await fetch(API_BASE+'/api/stocks-ai/research',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({symbol})});
     const d=await r.json(); if(!r.ok) throw new Error(d.detail||d.error||'Gemini research unavailable.');
     box.innerHTML='<b>'+escapeHtml(d.symbol||symbol)+'</b><br><span class="src">'+escapeHtml(d.source||'Google Gemini')+' · '+new Date((d.retrievedAt||0)*1000).toLocaleString()+'</span><div style="margin-top:10px;white-space:pre-wrap">'+escapeHtml(d.reply||'No study returned.')+'</div>';
   }catch(e){box.textContent=e.message||'Gemini stock research unavailable.';}
@@ -727,7 +823,7 @@ async function sendStocksAI(){
   stocksHistory.push({role:'user',content:text});
   const typing=document.createElement('div'); typing.className='typing'; typing.innerHTML='<span></span><span></span><span></span>'; body.appendChild(typing); body.scrollTop=body.scrollHeight;
   try{
-    const r=await fetch(API_BASE+'/api/stocks-ai/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:stocksHistory})});
+    const r=await fetch(API_BASE+'/api/stocks-ai/chat',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:stocksHistory})});
     const data=await r.json(); if(!r.ok) throw new Error(data.error||'Stocks AI request failed.');
     typing.remove(); const reply=data.reply||'I could not generate an answer.'; body.insertAdjacentHTML('beforeend',`<div class="msg bot">${escapeHtml(reply)}</div>`); stocksHistory.push({role:'assistant',content:reply});
   }catch(e){typing.remove(); body.insertAdjacentHTML('beforeend',`<div class="msg bot">${escapeHtml(e.message||'Stocks AI is temporarily unavailable.')}</div>`);}
