@@ -1,0 +1,102 @@
+{
+  "packageVersion": "2026.09.10",
+  "taxYear": "2026-27",
+  "lastChecked": "2026-09-10",
+  "status": "verified-snapshot",
+  "notes": "This snapshot is a curated current-source index. It is not a claim that every Indian tax circular, case, GST notification, ICAI publication or state tax rule is embedded in the calculator.",
+  "incomeTax": [
+    {
+      "date": "2026-04-01",
+      "title": "Income-tax Act, 2025 applies for Tax Year 2026-27 onwards",
+      "detail": "For tax payments for Tax Year 2026-27 and later, the Income-tax Act, 2025 applies. AY 2026-27 and earlier continue under the earlier framework, subject to transition rules.",
+      "source": "Income Tax Department",
+      "url": "https://www.incometax.gov.in/iec/foportal/latest-news"
+    },
+    {
+      "date": "2026-03-20",
+      "title": "Income-tax Rules, 2026 notified",
+      "detail": "CBDT notified the Income-tax Rules, 2026 under section 533 of the Income-tax Act, 2025, effective 1 April 2026.",
+      "source": "Income Tax Department / CBDT",
+      "url": "https://www.incometax.gov.in/iec/foportal/sites/default/files/2026-03/En-Notified-IT-Rules-2026-20-03-2026.pdf"
+    },
+    {
+      "date": "2026-04-08",
+      "title": "AY 2026-27 ITR forms notified",
+      "detail": "CBDT notified ITR-1, ITR-2, ITR-3, ITR-4, ITR-5, ITR-6, ITR-V and ITR-U for AY 2026-27.",
+      "source": "Income Tax Department",
+      "url": "https://www.incometax.gov.in/iec/foportal/latest-news"
+    },
+    {
+      "date": "2026-04-01",
+      "title": "TDS transition rule",
+      "detail": "For credit/payment events on or before 31 March 2026, the Income-tax Act, 1961 applies; events on or after 1 April 2026 are governed by the corresponding provisions of the Income-tax Act, 2025.",
+      "source": "Income Tax Department",
+      "url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance"
+    },
+    {
+      "date": "2026-04-01",
+      "title": "New TDS/TCS section references",
+      "detail": "For transactions from 1 April 2026, TDS/TCS reporting uses the applicable table item under section 393/394 of the Income-tax Act, 2025 rather than old section numbers such as 194C or 194J.",
+      "source": "Income Tax Department",
+      "url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tax-payments"
+    },
+    {
+      "date": "2026-04-01",
+      "title": "New PAN/form transition",
+      "detail": "Existing PAN/TAN numbers remain valid. New PAN applications from 1 April 2026 use the forms prescribed by the Income-tax Rules, 2026.",
+      "source": "Income Tax Department",
+      "url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/income-tax-forms"
+    }
+  ],
+  "icai": [
+    {
+      "date": "2026-08-18",
+      "title": "Pre-Budget Memorandum 2027",
+      "detail": "ICAI Direct Taxes Committee invited suggestions on tax policy reform, simplification, litigation reduction and compliance for Union Budget 2027.",
+      "source": "ICAI Direct Taxes Committee",
+      "url": "https://www.icai.org/post/memorandum-suggestions-pre-budget-2027"
+    },
+    {
+      "date": "2026-08-27",
+      "title": "Capital Gains Taxation and Exemptions webinar",
+      "detail": "ICAI Direct Taxes Committee listed a 27 August 2026 webinar on capital gains taxation and exemptions.",
+      "source": "ICAI Direct Taxes Committee",
+      "url": "https://www.icai.org/post/965"
+    },
+    {
+      "date": "2026-08-06",
+      "title": "Foreign income and non-resident taxation webinar",
+      "detail": "ICAI listed a 6 August 2026 session covering foreign income, disclosure and non-resident taxation.",
+      "source": "ICAI Direct Taxes Committee",
+      "url": "https://www.icai.org/post/965"
+    },
+    {
+      "date": "2026-07-16",
+      "title": "TDS compliance and ITR filing precautions",
+      "detail": "ICAI Direct Taxes Committee listed a webinar on TDS compliance and ITR filing precautions for AY 2026-27.",
+      "source": "ICAI Direct Taxes Committee",
+      "url": "https://www.icai.org/post/direct-taxes-committee"
+    },
+    {
+      "date": "2026-07-09",
+      "title": "AI in ITR filing",
+      "detail": "ICAI listed a webinar on use of AI in filing income-tax returns for AY 2026-27.",
+      "source": "ICAI Direct Taxes Committee",
+      "url": "https://www.icai.org/post/direct-taxes-committee"
+    },
+    {
+      "date": "2026-03-23",
+      "title": "Income-tax Act, 2025 and Rules, 2026 transition training",
+      "detail": "ICAI Direct Taxes Committee began training and publication work around the new Act, Rules and Forms effective 1 April 2026.",
+      "source": "ICAI Direct Taxes Committee",
+      "url": "https://www.icai.org/post/dtc-announcement-19032026"
+    },
+    {
+      "date": "2026-03-19",
+      "title": "ICAI bare Act and Rules publications",
+      "detail": "ICAI announced publications of the Income-tax Act, 2025 with section mapping and the Income-tax Rules, 2026 with rule/form mapping.",
+      "source": "ICAI Direct Taxes Committee",
+      "url": "https://www.icai.org/post/dtc-announcement-19032026"
+    }
+  ]
+}
