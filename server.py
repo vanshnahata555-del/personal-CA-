@@ -214,19 +214,21 @@ def get_user(request: Request):
 def require_user(request: Request):
     user = get_user(request)
     if not user:
-        raise HTTPException(401, "Please sign in with Google first.")
+        raise HTTPException(401, "Please sign in to Personal CA first.")
     return user
 
 
 def require_verified(request: Request):
     user = require_user(request)
     if not bool(user["email_verified"]):
-        raise HTTPException(403, "Please sign in with a verified Google account before continuing.")
+        raise HTTPException(403, "This account is not email-verified. Use Google Sign-In or complete the profile before continuing.")
     return user
 
 
 def require_profile(request: Request):
-    user = require_verified(request)
+    # Google accounts are verified by Google. Quick email sign-in intentionally
+    # does not send an OTP, so it is treated as a lightweight project account.
+    user = require_user(request)
     if not bool(user["profile_completed"]):
         raise HTTPException(403, "Complete your date of birth and gender profile before continuing.")
     return user
@@ -270,6 +272,10 @@ async def security_headers(request: Request, call_next):
 
 class GoogleBody(BaseModel):
     credential: str = Field(..., min_length=20, max_length=10000)
+
+
+class EmailBody(BaseModel):
+    email: str = Field(..., min_length=5, max_length=254)
 
 
 class ProfileBody(BaseModel):
@@ -380,6 +386,55 @@ def auth_google(body: GoogleBody, request: Request):
         raise
     except Exception:
         raise HTTPException(401, "Google sign-in could not be verified. Please try again.")
+
+
+@app.post("/api/auth/email")
+def auth_email(body: EmailBody, request: Request):
+    """Lightweight email sign-in for the school/project edition.
+
+    No OTP or email is sent by design. Therefore this is not identity verification
+    and should not be used for a real account system without adding a password,
+    magic-link, or another verified authentication method.
+    """
+    if not rate_check("email:" + client_key(request), 20, 600):
+        raise HTTPException(429, "Too many sign-in attempts. Please try again later.")
+    email = body.email.strip().lower()
+    import re
+    if not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email):
+        raise HTTPException(400, "Please enter a valid email address.")
+
+    # Stable project-only account ID. Do not treat this as proof of ownership.
+    user_id = "email_" + hashlib.sha256((email + SESSION_SECRET).encode("utf-8")).hexdigest()[:40]
+    now = int(time.time())
+    with db() as conn:
+        old = conn.execute("SELECT * FROM users WHERE id=?", (user_id,)).fetchone()
+        if old:
+            conn.execute("UPDATE users SET email=?,name=? WHERE id=?", (enc(email), enc(email.split("@")[0] or "Personal CA user"), user_id))
+        else:
+            conn.execute(
+                "INSERT INTO users(id,name,email,picture,google_verified,email_verified,created_at) VALUES(?,?,?,?,0,0,?)",
+                (user_id, enc(email.split("@")[0] or "Personal CA user"), enc(email), enc(""), now),
+            )
+        conn.execute("DELETE FROM sessions WHERE user_id=?", (user_id,))
+        current = conn.execute("SELECT * FROM users WHERE id=?", (user_id,)).fetchone()
+
+    token = new_session(user_id)
+    response = JSONResponse({
+        "signedIn": True,
+        "email": email,
+        "name": email.split("@")[0] or "Personal CA user",
+        "emailVerified": False,
+        "profileCompleted": bool(current["profile_completed"]),
+        "dateOfBirth": dec(current["date_of_birth"]),
+        "gender": dec(current["gender"]),
+        "authMethod": "email_project_signin",
+        "notice": "No OTP was sent. This email sign-in is not identity verification."
+    })
+    response.set_cookie(
+        "pca_session", token, httponly=True, secure=PRODUCTION,
+        samesite="none" if PRODUCTION else "lax", max_age=7 * 86400, path="/"
+    )
+    return response
 
 
 @app.get("/api/auth/me")

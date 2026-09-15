@@ -116,8 +116,15 @@ coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-t
 <button class="back-btn" onclick="show('home')">← Back to Home</button>
 <div class="steps"><div id="st1" class="step active">1. Sign in</div><div id="st2" class="step">2. Upload &amp; enter details</div><div id="st3" class="step">3. Review</div></div>
 
-<div id="login" class="card"><h2>Sign in to Personal CA</h2><p style="color:#667085">Sign in with your Google account. Google verifies your account, so Personal CA does not send email or SMS OTPs. AI access is enabled after Google sign-in and completion of the basic profile.</p>
+<div id="login" class="card"><h2>Sign in to Personal CA</h2><p style="color:#667085">Choose Google Sign-In or quick email sign-in. No email or SMS OTP is sent. AI access is enabled after sign-in and completion of the basic profile.</p>
 <div id="googleButton" style="margin:18px 0"></div>
+<div style="display:flex;align-items:center;gap:10px;margin:14px 0;color:#98a2b3"><span style="height:1px;background:#e5e7eb;flex:1"></span><span style="font-size:12px">OR</span><span style="height:1px;background:#e5e7eb;flex:1"></span></div>
+<div class="email-login-box">
+<label for="emailSignIn">Email address</label>
+<input id="emailSignIn" type="email" autocomplete="email" placeholder="you@example.com">
+<button class="btn secondary" style="margin-top:8px" onclick="emailSignIn()">Continue with Email</button>
+<p style="font-size:12px;color:#7a8492;margin:8px 0 0">Quick project sign-in: no OTP and no email is sent. This is not identity verification.</p>
+</div>
 <div id="authStatus" class="note" style="display:none"></div>
 <p id="authError" style="display:none;color:#b42318;font-size:13px;margin-top:12px"></p>
 <p style="font-size:12px;color:#7a8492;margin-top:14px">Never share your Google password, OTP, card PIN, or UPI PIN with Personal CA.</p>
@@ -126,7 +133,7 @@ coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-t
 <div id="profileGate" class="card profile-card hidden">
 <button class="back-btn" onclick="backToLogin()">← Back</button>
 <h2>👤 Complete your personal profile</h2>
-<p style="color:#667085">Before tax analysis or AI access, enter your date of birth and gender. Google Sign-In provides your Google account details, but it does not reliably provide these profile fields, so Personal CA asks you directly.</p>
+<p style="color:#667085">Before tax analysis or AI access, enter your date of birth and gender. Your sign-in provides your account email, but Personal CA asks you directly for these profile fields.</p>
 <div class="row">
 <div><label for="profileDob">Date of birth</label><input id="profileDob" type="date" autocomplete="bday" required></div>
 <div><label for="profileGender">Gender</label><select id="profileGender"><option value="">Select</option><option>Female</option><option>Male</option><option>Non-binary</option><option>Prefer not to say</option></select></div>
@@ -470,6 +477,34 @@ async function handleGoogleCredential(response){
 let pendingAI = null;
 function closeAIGate(){document.getElementById('aiGateOverlay').classList.remove('open');}
 function aiName(kind){return kind==='stocks'?'Stocks AI':'Nivara AI';}
+function aiGatePrimaryAction(){
+  closeAIGate();
+  pendingAI = pendingAI || 'stocks';
+  show('app');
+  document.getElementById('login').classList.remove('hidden');
+  document.getElementById('profileGate').classList.add('hidden');
+  document.getElementById('uploader').classList.add('hidden');
+  authMessage(`Please sign in to use ${aiName(pendingAI)} for free.`,false);
+}
+
+async function emailSignIn(){
+  clearAuthError();
+  const input=document.getElementById('emailSignIn');
+  const email=(input.value||'').trim().toLowerCase();
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    authError('Please enter a valid email address.');
+    return;
+  }
+  try{
+    const r=await fetch(API_BASE+'/api/auth/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+    const data=await r.json();
+    if(!r.ok) throw new Error(data.error||'Email sign-in failed.');
+    currentUser=data;
+    authMessage(`Signed in as ${data.email}. No OTP was sent.`,true);
+    if(data.profileCompleted){ openRequestedAI(); } else { showProfileGate(); }
+  }catch(e){ authError(e.message||'Email sign-in failed.'); }
+}
+
 function openAIAccess(kind){
   pendingAI=kind;
   if(!currentUser){
