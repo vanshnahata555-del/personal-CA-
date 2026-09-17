@@ -1,0 +1,117 @@
+{
+  "package": "Personal CA Indian Contract Law Reference",
+  "version": "2026-09-12",
+  "jurisdiction": "India",
+  "status": "reference_only",
+  "current_statute": {
+    "title": "Indian Contract Act, 1872",
+    "act_number": "9 of 1872",
+    "enactment_date": "1872-04-25",
+    "enforcement_date": "1872-09-01",
+    "primary_source": "https://www.indiacode.nic.in/handle/123456789/2187?view_type=browse",
+    "official_source": "India Code",
+    "note": "India Code currently lists the Indian Contract Act, 1872 as the central contract statute. This package does not claim that a new Indian Contract Act was enacted in 2025 or 2026. Always verify the consolidated statute and applicable amendments before relying on a legal conclusion."
+  },
+  "historical_timeline": [
+    {
+      "year": 1872,
+      "event": "Indian Contract Act, 1872 enacted; came into force 1 September 1872."
+    },
+    {
+      "year": 1899,
+      "event": "Indian Contract Act Amendment Act, 1899 amended provisions including undue influence; historical amendment record is preserved on India Code."
+    },
+    {
+      "year": 1930,
+      "event": "Sale of Goods subject matter was separated into the Sale of Goods Act, 1930; corresponding Contract Act provisions are shown as repealed on India Code."
+    },
+    {
+      "year": 1932,
+      "event": "Partnership provisions were separated into the Indian Partnership Act, 1932; the Contract Act record shows the relevant old partnership provisions as repealed."
+    },
+    {
+      "year": 2023,
+      "event": "Mediation Act, 2023 included amendments to the Indian Contract Act, 1872."
+    },
+    {
+      "year": 2026,
+      "event": "The Indian Contract Act, 1872 remains the principal central contract statute in the India Code record reviewed for Personal CA; no replacement 2025/2026 Contract Act was identified in the official source search."
+    }
+  ],
+  "topic_map": [
+    {
+      "sections": "1-9",
+      "topic": "Proposal, communication, acceptance and revocation"
+    },
+    {
+      "sections": "10-22",
+      "topic": "Contracts, capacity, sound mind, consent, free consent, coercion, undue influence, fraud, misrepresentation and mistake"
+    },
+    {
+      "sections": "23-30",
+      "topic": "Lawful consideration/object and void agreements"
+    },
+    {
+      "sections": "31-36",
+      "topic": "Contingent contracts"
+    },
+    {
+      "sections": "37-67",
+      "topic": "Performance of contracts, reciprocal promises, time/place and discharge-related provisions"
+    },
+    {
+      "sections": "68-72",
+      "topic": "Certain relations resembling those created by contract"
+    },
+    {
+      "sections": "73-75",
+      "topic": "Consequences of breach and compensation"
+    },
+    {
+      "sections": "124-147",
+      "topic": "Indemnity and guarantee"
+    },
+    {
+      "sections": "148-181",
+      "topic": "Bailment, pledge and related duties"
+    },
+    {
+      "sections": "182-238",
+      "topic": "Agency and related rules"
+    }
+  ],
+  "related_statutes": [
+    {
+      "title": "Sale of Goods Act, 1930",
+      "reason": "Dedicated statute for sale-of-goods law after corresponding Contract Act provisions were repealed."
+    },
+    {
+      "title": "Indian Partnership Act, 1932",
+      "reason": "Dedicated partnership statute after corresponding Contract Act provisions were repealed."
+    },
+    {
+      "title": "Specific Relief Act, 1963",
+      "reason": "Important remedies for enforcement and specific relief in appropriate civil matters."
+    },
+    {
+      "title": "Limitation Act, 1963",
+      "reason": "Limitation rules can affect contractual claims and proceedings."
+    },
+    {
+      "title": "Arbitration and Conciliation Act, 1996",
+      "reason": "Relevant to arbitration agreements and dispute resolution."
+    },
+    {
+      "title": "Mediation Act, 2023",
+      "reason": "Contains mediation framework and amendments to the Contract Act."
+    }
+  ],
+  "ai_usage_rules": [
+    "Use this package to identify relevant contract-law topics and official-source links.",
+    "Do not present the AI as a lawyer, advocate, court, government authority or legal representative.",
+    "Do not fabricate section numbers, amendments, case law, legal outcomes or deadlines.",
+    "For a legal conclusion, retrieve/verify the applicable official consolidated text and current amendments first.",
+    "Distinguish historical law from the law applicable to the date of the contract, dispute and proceeding.",
+    "This reference layer is not a substitute for professional legal advice."
+  ]
+}
