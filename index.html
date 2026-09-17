@@ -846,5 +846,65 @@ function toggleStatusMenu(){const m=document.getElementById('statusMenu');m.clas
 function toggleHowItWorks(){document.getElementById('howItWorks').classList.toggle('open');}
 function escapeHtml(str){return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');}
 window.addEventListener('DOMContentLoaded',()=>{ loadGoogleButton(); restoreSession(); });
+  const slab = (taxable, regime) => {
+    const bands = regime === 'new'
+      ? [[400000, 0], [800000, 0.05], [1200000, 0.10], [1600000, 0.15], [2000000, 0.20], [2400000, 0.25], [Infinity, 0.30]]
+      : [[250000, 0], [500000, 0.05], [1000000, 0.20], [Infinity, 0.30]];
+    
+    let tax = 0, prev = 0;
+    for (const [limit, rate] of bands) {
+      if (taxable > prev) {
+        const chunk = Math.min(taxable, limit) - prev;
+        tax += chunk * rate;
+        prev = limit;
+      } else break;
+    }
+    
+    if (regime === 'new' && taxable <= 1200000) tax = 0;
+    if (regime === 'old' && taxable <= 500000) tax = 0;
+    
+    return tax * 1.04;
+  };
+
+  const stdDed = (employment === 'Salaried' || employment === 'Retired / Pensioner') ? 75000 : 0;
+  const stdDedOld = (employment === 'Salaried' || employment === 'Retired / Pensioner') ? 50000 : 0;
+
+  const taxableNew = Math.max(0, income - stdDed);
+  const totalOldDeductions = c80 + d80 + nps + loan + stdDedOld;
+  const taxableOld = Math.max(0, income - totalOldDeductions);
+
+  const taxNew = Math.round(slab(taxableNew, 'new'));
+  const taxOld = Math.round(slab(taxableOld, 'old'));
+  const diff = taxOld - taxNew;
+
+  document.getElementById('count').textContent = selectedFiles.length;
+  document.getElementById('calcOutput').innerHTML = `
+    <div class="result-hero">
+      <h3>Tax Liability Summary (Tax Year 2026-27)</h3>
+      <div class="row" style="margin-top:10px">
+        <div>
+          <small>New Tax Regime Payable</small>
+          <div class="amt">₹${taxNew.toLocaleString('en-IN')}</div>
+          <small>Taxable Income: ₹${taxableNew.toLocaleString('en-IN')}</small>
+        </div>
+        <div>
+          <small>Old Tax Regime Payable</small>
+          <div class="amt" style="color:#42506a">₹${taxOld.toLocaleString('en-IN')}</div>
+          <small>Taxable Income: ₹${taxableOld.toLocaleString('en-IN')}</small>
+        </div>
+      </div>
+      <div class="note ${diff >= 0 ? 'ok' : ''}" style="margin-top:14px">
+        <b>Recommendation:</b> ${diff > 0 ? `New Regime saves you ₹${diff.toLocaleString('en-IN')}!` : diff < 0 ? `Old Regime saves you ₹${Math.abs(diff).toLocaleString('en-IN')}!` : 'Both regimes result in equal tax liability.'}
+      </div>
+    </div>
+  `;
+
+  document.getElementById('uploader').classList.add('hidden');
+  document.getElementById('review').classList.remove('hidden');
+  document.getElementById('st2').classList.remove('active');
+  document.getElementById('st3').classList.add('active');
+}
 </script>
-</body></html>
+</body>
+</html>
+
