@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Personal CA — AI Tax Assistant</title>
+<meta content="yCHba6oHkhxCFwEzGIoMzEVPRokQsaWYdfjQKQLj6ss" name="google-site-verification">
+<meta content="Personal CA is an AI-powered personal tax advisor for India, founded by Vansh Rajesh Nahata. Get real tax computation, government scheme matching, and a live AI tax chatbot." name="description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Personal CA",
+  "description": "AI-powered personal tax advisor for India — tax computation, government scheme matching, and an AI tax assistant.",
+  "founder": {
+    "@type": "Person",
+    "name": "Vansh Rajesh Nahata"
+  }
+}
+</script>
+<style>
+:root{--blue:#1769e0;--ink:#172033;--muted:#667085;--line:#e5e7eb;--bg:#f7f9fc}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:5}.header-actions{display:flex;align-items:center;gap:10px}
+.more-wrap{position:relative}.more-btn{background:#fff;border:1px solid var(--line);border-radius:10px;width:38px;height:38px;font-size:22px;cursor:pointer;line-height:1}.status-menu{display:none;position:absolute;left:0;top:46px;width:330px;max-width:90vw;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 14px 35px #00000020;z-index:90}.status-menu.open{display:block}.status-row{padding:9px 0;border-bottom:1px solid #eef1f5;font-size:13px}.status-row:last-child{border-bottom:0}.status-row b{display:block;color:var(--ink);margin-bottom:3px}.status-row span{color:var(--muted)}.how-btn{margin-top:14px}.how-panel{display:none;margin-top:14px;padding:18px;border:1px solid #cfe0ff;border-radius:14px;background:#f8fbff}.how-panel.open{display:block}.logo{font-size:22px;font-weight:800;color:var(--blue)}.logo span{color:#111827}
+nav button{background:none;border:0;margin-left:18px;cursor:pointer;color:#586579;font-size:14px}
+.hero{padding:72px 6%;background:linear-gradient(135deg,#edf5ff,#fff)}.hero h1{font-size:48px;line-height:1.08;max-width:760px;margin:0 0 18px}.hero h1 span{color:var(--blue)}
+.hero p{max-width:680px;color:var(--muted);font-size:18px;line-height:1.6}.btn{background:var(--blue);color:#fff;border:0;border-radius:10px;padding:13px 18px;font-weight:700;cursor:pointer}.secondary{background:#eef4ff;color:var(--blue)}
+.wrap{max-width:1100px;margin:auto;padding:34px 20px}.center{text-align:center}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 5px 18px #00000008}.feature p{color:var(--muted);line-height:1.5;font-size:14px}
+#app,#pricing,#rules,#updates{display:none}.steps{display:flex;gap:8px;margin-bottom:18px}.step{flex:1;text-align:center;padding:9px;background:#e9eef5;border-radius:8px;font-size:13px;color:#657184}.step.active{background:var(--blue);color:white}
+input,select{width:100%;padding:12px;border:1px solid #ccd3dd;border-radius:9px;margin:7px 0 14px;font-size:15px;font-family:inherit}label{font-size:14px;font-weight:700}.hidden{display:none}.profile-card{max-width:620px;margin:0 auto}.profile-note{font-size:12px;color:var(--muted);line-height:1.5}
+.upload{border:2px dashed #b8c7da;border-radius:13px;padding:32px;text-align:center;background:#fbfdff;cursor:pointer}.file{padding:8px;border-bottom:1px solid #eee;font-size:14px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:15px}.metric{font-size:28px;font-weight:800;color:var(--blue);margin-top:5px}.pill{display:inline-block;background:#eaf3ff;color:var(--blue);padding:5px 9px;border-radius:20px;font-size:12px;margin:3px}.note{padding:12px;border-radius:10px;background:#fff7df;color:#765900;margin:10px 0}.ok{background:#eaf8ef;color:#176b39}
+.bottom-cta{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0 28px}.bottom-cta h2{margin-bottom:8px} footer{text-align:center;color:#7b8492;padding:35px;font-size:13px}
+table{width:100%;border-collapse:collapse;margin:10px 0}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);font-size:14px}th{background:#f3f7fd;color:#42506a;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.rule-card h3{margin-top:0}
+.src{font-size:12px;color:#8993a4;margin-top:6px}
+.result-hero{background:#eef4ff;border-radius:14px;padding:20px;margin:14px 0}
+.result-hero .amt{font-size:34px;font-weight:800;color:var(--blue)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 24px;text-align:center;position:relative;display:flex;flex-direction:column}
+.plan.featured{border:2px solid var(--blue);box-shadow:0 10px 30px #1769e022}
+.plan .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
+.plan h3{margin:6px 0 2px;font-size:16px;color:#586579;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.plan .price{font-size:38px;font-weight:800;color:var(--ink);margin:8px 0}
+.plan .price small{font-size:14px;color:#8993a4;font-weight:500}
+.plan ul{list-style:none;padding:0;margin:16px 0;text-align:left;flex:1}
+.plan li{padding:8px 0;border-bottom:1px solid #f0f2f5;font-size:14px;color:#42506a}
+.plan li::before{content:"✓ ";color:#1a9e5c;font-weight:700}
+@media(max-width:750px){.pricing-grid{grid-template-columns:1fr}}
+coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.coverage-item{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fbfdff}.coverage-item b{display:block;margin-bottom:5px}.coverage-item span{font-size:12px;color:var(--muted);line-height:1.45}@media(max-width:750px){.coverage-grid{grid-template-columns:1fr}}
+#payOverlay{position:fixed;inset:0;background:#0d1b2e88;display:none;align-items:center;justify-content:center;z-index:60}
+#payOverlay.open{display:flex}
+#payModal{background:#fff;border-radius:16px;padding:26px;width:340px;max-width:90vw;text-align:center}
+#payModal h3{margin-top:0}
+.pay-method{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;cursor:pointer;text-align:left;background:#fff}
+.pay-method:hover{border-color:var(--blue);background:#f7faff}
+.pay-method .icon{font-size:22px}
+.pay-method .name{font-weight:700;font-size:14px}
+.pay-close{background:none;border:0;color:#8993a4;font-size:13px;margin-top:8px;cursor:pointer}
+.back-btn{background:none;border:0;color:var(--blue);font-weight:700;font-size:14px;cursor:pointer;padding:8px 0;margin-bottom:6px;display:inline-flex;align-items:center;gap:4px}
+.back-btn:hover{text-decoration:underline}
+#chatFab{position:fixed;bottom:22px;left:22px;background:var(--blue);color:#fff;border:0;border-radius:50px;padding:14px 20px;font-weight:700;box-shadow:0 8px 24px #1769e055;cursor:pointer;z-index:50;font-size:14px}
+#chatPanel{position:fixed;bottom:90px;right:22px;width:360px;max-width:92vw;height:480px;background:#fff;border-radius:16px;box-shadow:0 12px 40px #00000030;display:none;flex-direction:column;z-index:50;overflow:hidden;border:1px solid var(--line)}
+#chatPanel.open{display:flex}
+.chat-head{background:var(--blue);color:#fff;padding:14px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.chat-head small{display:block;font-weight:400;opacity:.85;font-size:11px;margin-top:2px}
+.chat-close{background:none;border:0;color:#fff;font-size:18px;cursor:pointer}
+#chatBody{flex:1;overflow-y:auto;padding:14px;background:#f7f9fc;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:85%;padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.45}
+.msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:3px}
+.msg.user{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
+.msg.sys{background:#fff7df;color:#765900;font-size:12px;align-self:center}
+#chatInputRow{display:flex;border-top:1px solid var(--line);padding:10px}
+#chatInputRow input{margin:0;flex:1;border-radius:20px}
+#chatInputRow button{margin-left:8px;background:var(--blue);color:#fff;border:0;border-radius:20px;padding:0 16px;font-weight:700;cursor:pointer}
+.typing{display:flex;gap:4px;align-self:flex-start;padding:10px 13px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.typing span{width:6px;height:6px;background:#9aa4b5;border-radius:50%;animation:blink 1.2s infinite ease-in-out}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.ai-orb{position:absolute;width:58px;height:58px;right:14px;top:-30px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#9ec4ff 22%,#1769e0 55%,#081a3d);box-shadow:0 14px 28px #1769e077,inset -8px -10px 16px #0006,inset 7px 7px 14px #fff8;transform:rotateX(20deg);animation:floatOrb 3s ease-in-out infinite}#chatPanel{position:fixed}@keyframes floatOrb{50%{transform:translateY(-7px) rotateX(20deg) rotateY(25deg)}}
+@media(max-width:750px){.grid,.row{grid-template-columns:1fr}.hero h1{font-size:36px}nav{display:none}.header-actions{margin-left:auto}#chatPanel{width:92vw;right:4vw;height:60vh}#chatFab{left:16px;bottom:16px}}
+.stock-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.stock-chat{min-height:330px;display:flex;flex-direction:column}.stock-chat-body{flex:1;min-height:190px;max-height:380px;overflow:auto;background:#f7f9fc;border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}.stock-input-row{display:flex;gap:8px}.stock-input-row input{margin:0}.stock-chip{display:inline-block;padding:6px 10px;border:1px solid #cfe0ff;background:#f8fbff;color:var(--blue);border-radius:999px;font-size:12px;margin:4px;cursor:pointer}.stock-table td,.stock-table th{vertical-align:top}.stock-disclaimer{font-size:12px;color:#765900;line-height:1.5;background:#fff7df;border-radius:10px;padding:12px;margin-top:12px}@media(max-width:750px){.stock-grid{grid-template-columns:1fr}}
+
+/* Educational Market Simulator */
+.employee-card{margin-top:22px}.employee-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.employee-result{background:#f7fbff;border:1px solid #dbeafe;border-radius:12px;padding:16px}.employee-result .big{font-size:30px;font-weight:800;color:var(--blue)}.rule-tag{display:inline-block;padding:5px 9px;border-radius:999px;background:#eaf8ef;color:#176b39;font-size:12px;font-weight:700}.employee-note{font-size:12px;color:var(--muted);line-height:1.5}
+.ai-gate-overlay{position:fixed;inset:0;background:rgba(15,23,42,.58);display:none;align-items:center;justify-content:center;z-index:3000;padding:18px}.ai-gate-overlay.open{display:flex}.ai-gate-modal{width:min(520px,100%);background:#fff;border-radius:20px;padding:28px;box-shadow:0 24px 70px rgba(0,0,0,.22);text-align:center}.ai-gate-modal h2{margin:0 0 8px}.ai-gate-modal p{color:var(--muted);line-height:1.6}.ai-gate-modal .gate-icon{font-size:42px;margin-bottom:8px}
+@media(max-width:750px){.employee-grid{grid-template-columns:1fr}}
+.rdp-card{margin-top:22px}.rdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.rdp-form{display:grid;gap:11px}.rdp-form label{font-weight:700;font-size:13px}.rdp-form input{padding:12px;border:1px solid var(--line);border-radius:9px;font:inherit}.rdp-actions{display:flex;gap:10px;flex-wrap:wrap}.rdp-note{font-size:12px;color:var(--muted);line-height:1.55}.rdp-preview{background:#f7fbff;border:1px solid #dbeafe;border-radius:12px;padding:16px;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;min-height:180px;overflow:auto}@media(max-width:750px){.rdp-grid{grid-template-columns:1fr}}
+.market-card{margin-top:22px}.market-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.market-form{display:grid;gap:10px}.market-form label{font-weight:700;font-size:13px}.market-form input,.market-form select{padding:12px;border:1px solid var(--line);border-radius:9px;font:inherit}.market-result{background:#f7fbff;border:1px solid #dbeafe;border-radius:12px;padding:16px}.market-note{font-size:12px;color:var(--muted);line-height:1.5}.risk-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#eef2ff;font-size:12px;font-weight:700}@media(max-width:750px){.market-grid{grid-template-columns:1fr}}
+
+@media(max-width:750px){#mobileNavLinks{display:grid !important}.more-wrap{z-index:4000}.status-menu{max-height:80vh;overflow:auto}}
+</style><script>window.PERSONAL_CA_API=window.PERSONAL_CA_API||"https://personal-ca-1.onrender.com";const API_BASE=window.PERSONAL_CA_API.replace(/\/$/,"");</script>
+<script>
+/* Personal CA client state: email sign-in is intentionally local/no-OTP. */
+let currentUser = null;
+let pendingAI = null;
+const LOCAL_ACCOUNT_KEY = "personal_ca_local_account_v2";
+</script><script async="" defer="" src="https://accounts.google.com/gsi/client"></script>
+</meta></head>
+<body>
+<header><div class="more-wrap"><button aria-label="Open status menu" class="more-btn" onclick="toggleStatusMenu()" type="button">⋮</button><div class="status-menu" id="statusMenu"><h3 style="margin:0 0 8px">Account &amp; system status</h3><div id="statusMenuContent"><div class="status-row"><b>Loading status…</b><span>Please wait.</span></div></div><div id="mobileNavLinks" style="display:grid;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)"><button class="btn secondary" onclick="show('home')" style="width:100%" type="button">Home</button><button class="btn secondary" onclick="ensureTaxProfile()" style="width:100%" type="button">Tax Assistant</button><button class="btn secondary" onclick="show('pricing')" style="width:100%" type="button">Free</button><button class="btn secondary" onclick="show('rules')" style="width:100%" type="button">Rules &amp; Regulations</button><button class="btn secondary" onclick="show('updates')" style="width:100%" type="button">Updates</button><button class="btn secondary" onclick="openAIAccess('stocks')" style="width:100%" type="button">Stocks AI</button><button class="btn secondary" onclick="show('rdp')" style="width:100%" type="button">Remote Desktop (RDP)</button></div><button class="btn secondary" onclick="show('updates');toggleStatusMenu()" style="width:100%;margin-top:10px" type="button">Open Update Center</button><button class="btn" onclick="openAIAccess('stocks');toggleStatusMenu()" style="width:100%;margin-top:10px" type="button">📈 Open Stocks AI</button><button class="btn secondary" onclick="show('rdp');toggleStatusMenuClose()" style="width:100%;margin-top:10px" type="button">🖥️ Remote Desktop (RDP)</button></div></div><div class="logo">Personal <span>CA</span> <small style="font-size:11px;color:#667085;font-weight:700">powered by Nivara AI</small></div><nav>
+<button onclick="show('home')" type="button">Home</button>
+<button onclick="ensureTaxProfile()" type="button">Tax Assistant</button>
+<button onclick="show('pricing')" type="button">Free</button>
+<button onclick="show('rules')" type="button">Rules &amp; Regulations</button>
+<button onclick="show('updates')" type="button">Updates</button><button onclick="openAIAccess('stocks')" type="button">Stocks AI</button><button onclick="show('rdp')" type="button">RDP</button>
+</nav><div class="header-actions"><span class="pill" style="background:#eaf8f0;color:#157347">FREE</span></div></header>
+<section id="home">
+<div class="hero"><h1>Your <span>AI Personal CA</span> for Indian tax planning.</h1>
+<p>Upload financial documents, get a real tax computation under both regimes, chat with an AI grounded in the current Income Tax Act rules, and see exactly which government schemes apply to you. Built to bring AI-assisted tax planning and personal finance guidance into one place.</p>
+<button class="btn" onclick="ensureTaxProfile()" type="button">Start Analysis →</button></div>
+<div class="wrap"><h2 class="center">Everything a personal CA does for you, in one place</h2>
+<div class="grid">
+<div class="card feature"><h3>📄 File Scanner</h3><p>Upload multiple PDFs, images or spreadsheets and keep them together for review.</p></div>
+<div class="card feature"><h3>🧮 Tax Computation</h3><p>Real slab-wise calculation of tax payable under the Old and New regime for Tax Year 2026-27, using the actual numbers you enter.</p></div>
+<div class="card feature"><h3>💡 Scheme Finder</h3><p>Matches you to PPF, NPS, ELSS, Sukanya Samriddhi and other schemes based on your profile.</p></div>
+<div class="card feature"><h3>💬 Ask-Your-CA Chatbot</h3><p>A chat assistant grounded in current government tax rules — ask it anything, anytime, from the button in the corner.</p></div>
+<div class="card feature"><h3>📜 Rules &amp; Regulations</h3><p>The official slab rates, deduction limits and rebate rules this tool applies, laid out in one reference page.</p></div>
+<div class="card feature"><h3>✅ Regime Comparison</h3><p>Side-by-side Old vs New regime tax liability, so you know which one actually saves you money.</p></div>
+</div></div>
+</section>
+<section id="app"><div class="wrap">
+<button class="back-btn" onclick="show('home')" type="button">← Back to Home</button>
+<div class="steps"><div class="step active" id="st1">1. Sign in</div><div class="step" id="st2">2. Upload &amp; enter details</div><div class="step" id="st3">3. Review</div></div>
+<div class="card" id="login"><h2>Sign in to Personal CA</h2><p style="color:#667085">Choose Google Sign-In or quick email sign-in. No email or SMS OTP is sent. AI access is enabled after sign-in and completion of the basic profile.</p>
+<div id="googleButton" style="margin:18px 0"></div>
+<div style="display:flex;align-items:center;gap:10px;margin:14px 0;color:#98a2b3"><span style="height:1px;background:#e5e7eb;flex:1"></span><span style="font-size:12px">OR</span><span style="height:1px;background:#e5e7eb;flex:1"></span></div>
+<div class="email-login-box">
+<label for="emailSignIn">Email address</label>
+<input autocomplete="email" id="emailSignIn" placeholder="you@example.com" type="email"/>
+<button class="btn secondary" onclick="emailSignIn()" style="margin-top:8px" type="button">Continue with Email</button>
+<p style="font-size:12px;color:#7a8492;margin:8px 0 0">Quick project sign-in: no OTP and no email is sent. This is not identity verification.</p>
+</div>
+<div class="note" id="authStatus" style="display:none"></div>
+<p id="authError" style="display:none;color:#b42318;font-size:13px;margin-top:12px"></p>
+<p style="font-size:12px;color:#7a8492;margin-top:14px">Never share your Google password, OTP, card PIN, or UPI PIN with Personal CA.</p>
+</div>
+<div class="card profile-card hidden" id="profileGate">
+<button class="back-btn" onclick="backToLogin()" type="button">← Back</button>
+<h2>👤 Complete your personal profile</h2>
+<p style="color:#667085">Before tax analysis or AI access, enter your date of birth and gender. Your sign-in provides your account email, but Personal CA asks you directly for these profile fields.</p>
+<div class="row">
+<div><label for="profileDob">Date of birth</label><input autocomplete="bday" id="profileDob" required="" type="date"/></div>
+<div><label for="profileGender">Gender</label><select id="profileGender"><option value="">Select</option><option>Female</option><option>Male</option><option>Non-binary</option><option>Prefer not to say</option></select></div>
+</div>
+<p class="profile-note">Your date of birth and gender are encrypted at rest by the Python backend. Keep your account credentials and verification codes private.</p>
+<button class="btn" id="saveProfileBtn" onclick="saveProfileAndContinue()" type="button">Continue securely</button>
+<p id="profileError" style="display:none;color:#b42318;font-size:13px;margin-top:12px"></p>
+</div>
+<div class="card hidden" id="uploader"><button class="back-btn" onclick="backToLogin()" type="button">← Back</button><h2>Upload financial files</h2><p style="color:#667085">Use sample/non-sensitive files. Files are analyzed only in your browser.</p>
+<div class="upload" onclick="document.getElementById('files').click()">📁<br/><b>Choose files</b><br/><small>PDF, JPG, PNG, CSV, XLSX</small><input hidden="" id="files" multiple="" onchange="listFiles()" type="file"/></div>
+<div id="filelist"></div>
+<h3 style="margin-top:26px">Or enter your numbers directly</h3>
+<p style="color:#667085;font-size:14px">These drive the real tax computation below — file upload alone only captures metadata for review.</p>
+<label>Employment type</label>
+<select id="employment"><option>Salaried</option><option>Self-employed / Freelancer</option><option>Business owner</option><option>Retired / Pensioner</option></select>
+<label>Annual gross income (₹)</label>
+<input id="income" placeholder="e.g. 1200000" type="number"/>
+<label>Age</label>
+<input id="age" placeholder="e.g. 32" type="number"/>
+<div class="row">
+<div><label>Section 80C investments — PPF, ELSS, EPF, life insurance (₹)</label><input id="c80" placeholder="e.g. 150000" type="number"/></div>
+<div><label>Health insurance premium — 80D (₹)</label><input id="d80" placeholder="e.g. 20000" type="number"/></div>
+</div>
+<div class="row">
+<div><label>NPS contribution — 80CCD(1B) (₹)</label><input id="nps" placeholder="e.g. 50000" type="number"/></div>
+<div><label>Home loan interest — 24(b) (₹)</label><input id="loan" placeholder="e.g. 180000" type="number"/></div>
+</div>
+<br/><button class="btn" onclick="review()" type="button">Analyze &amp; compute tax →</button></div>
+<div class="card hidden" id="review"><button class="back-btn" onclick="backToUploader()" type="button">← Back</button><h2>Personal CA review</h2>
+<div class="row">
+<div class="card"><small>Files reviewed</small><div class="metric" id="count">0</div></div>
+<div class="card"><small>Analysis status</small><div class="metric" style="font-size:20px">Complete</div></div>
+</div>
+<div class="note" id="profileSummary" style="margin-top:14px"></div>
+<div id="calcOutput"></div>
+<div class="card employee-card">
+<h2>👨‍💼 Employee Tax &amp; NPS — 80CCD Rules</h2>
+<p style="color:var(--muted);font-size:14px">Check how NPS contributions are treated for an employee under the Old and New Tax Regimes for Tax Year 2026-27.</p>
+<div class="employee-grid">
+<div>
+<label>Tax regime</label>
+<select id="employeeRegime"><option value="new">New Tax Regime</option><option value="old">Old Tax Regime</option></select>
+<label>Basic salary + eligible DA (₹/year)</label>
+<input id="employeeSalary" min="0" placeholder="e.g. 800000" type="number"/>
+<label>Employee's own NPS contribution — 80CCD(1) (₹)</label>
+<input id="employeeNps1" min="0" placeholder="e.g. 60000" type="number"/>
+<label>Additional NPS contribution — 80CCD(1B) (₹)</label>
+<input id="employeeNps1b" min="0" placeholder="e.g. 50000" type="number"/>
+<label>Employer's NPS contribution — 80CCD(2) (₹)</label>
+<input id="employeeNps2" min="0" placeholder="e.g. 112000" type="number"/>
+<label>Employer category</label>
+<select id="employeeEmployer"><option value="govt">Central / State Government</option><option value="other">PSU / Other employer</option></select>
+<button class="btn" onclick="calculateEmployeeNps()" type="button">Check 80CCD eligibility →</button>
+</div>
+<div class="employee-result" id="employeeResult">
+<span class="rule-tag">Tax Year 2026-27</span>
+<h3 style="margin:10px 0 6px">Enter employee details</h3>
+<p class="employee-note">The calculator will separate 80CCD(1), 80CCD(1B), and 80CCD(2) and apply the regime-specific rules.</p>
+</div>
+</div>
+<div class="note" style="margin-top:14px"><b>Important 2026-27 rule:</b> Under the New Tax Regime, employee deductions under 80CCD(1) and 80CCD(1B) are not claimable, while employer NPS contribution under 80CCD(2) can be deducted up to 14% of salary, subject to the applicable conditions. The official Income Tax Department ITR validation rules confirm this treatment. <a href="https://www.incometax.gov.in/iec/foportal/sites/default/files/2026-05/CBDT_e-Filing_ITR%201_Validation%20Rules_AY%202026-27.pdf" rel="noopener" target="_blank">Official CBDT validation rules</a>.</div>
+</div>
+<h3>📌 Documents scanned</h3><p><span class="pill">Salary</span><span class="pill">TDS</span><span class="pill">Interest</span><span class="pill">Investments</span><span class="pill">Deductions</span></p>
+<div class="note ok"><b>Document note:</b> Document metadata is collected for review. The tax computation uses the Tax Year 2026-27 rules shown on the Rules &amp; Regulations page.</div>
+<h3>🇮🇳 Applicable government schemes</h3>
+<div id="schemeOutput"></div>
+<button class="btn secondary" onclick="show('rules')" type="button">View official rules used in this calculation</button><br/><button class="btn how-btn" onclick="toggleHowItWorks()" type="button">How things work in this analysis</button><div class="how-panel" id="howItWorks"><h3 style="margin-top:0">How this analysis works</h3><ol><li>Your verified profile (date of birth and gender), entered income/deduction data, and selected file metadata are used as the analysis context.</li><li>The analysis compares the implemented old/new regime logic and applicable entered deductions.</li><li>Nivara AI can explain the result through the Python backend; AI explanations should not override deterministic tax calculations.</li><li>Rule and update status is shown in the top-left three-dots menu and Update Center.</li><li>Important filing decisions should be verified against current official sources or a qualified professional.</li></ol></div>
+<p style="font-size:12px;color:#7a8492;margin-top:22px">This tool gives an estimate for planning purposes, not a substitute for a qualified Chartered Accountant. Verify before filing.</p>
+</div></div></section>
+<section id="pricing"><div class="wrap">
+<button class="back-btn" onclick="show('home')" type="button">← Back to Home</button>
+<h2 class="center">Personal CA — Free Edition</h2>
+<p class="center" style="color:var(--muted);max-width:620px;margin:0 auto">Use Personal CA at no subscription cost. Nivara AI, Stocks AI, tax computation, government scheme matching, rules and updates are available after Google sign-in and profile completion.</p>
+<div class="plan featured" style="max-width:620px;margin:28px auto">
+<div class="badge">100% Free</div>
+<h3>Free Plan</h3>
+<div class="price">₹0<small>/forever</small></div>
+<ul>
+<li>Old vs New regime tax computation</li>
+<li>Government scheme matching</li>
+<li>Nivara AI powered by Gemini</li>
+<li>Stocks AI powered by Gemini — educational use</li>
+<li>Rules &amp; Update Center</li>
+<li>Remote Desktop (RDP) launcher</li>
+</ul>
+<button class="btn" onclick="showLogin('nivara')" type="button">Sign In &amp; Use Free</button>
+</div>
+</div></section>
+<section id="rules"><div class="wrap">
+<button class="back-btn" onclick="show('home')" type="button">← Back to Home</button>
+<h2>Government rules &amp; regulations applied</h2>
+<p style="color:var(--muted)">Figures below are the currently installed Tax Year 2026-27 rules package. India moved to the Income-tax Act, 2025 framework from 1 April 2026. Tax rules can change through Acts, Rules, notifications and circulars, so use the <b>Updates</b> page and official sources before filing.</p>
+<div class="card rule-card">
+<h3>New Tax Regime — slab rates (default regime)</h3>
+<table><tr><th>Income slab</th><th>Rate</th></tr>
+<tr><td>Up to ₹4,00,000</td><td>Nil</td></tr>
+<tr><td>₹4,00,000 – ₹8,00,000</td><td>5%</td></tr>
+<tr><td>₹8,00,000 – ₹12,00,000</td><td>10%</td></tr>
+<tr><td>₹12,00,000 – ₹16,00,000</td><td>15%</td></tr>
+<tr><td>₹16,00,000 – ₹20,00,000</td><td>20%</td></tr>
+<tr><td>₹20,00,000 – ₹24,00,000</td><td>25%</td></tr>
+<tr><td>Above ₹24,00,000</td><td>30%</td></tr>
+</table>
+<p>Standard deduction: <b>₹75,000</b> for salaried/pensioners. Section 87A rebate: up to <b>₹60,000</b>, making tax nil for taxable income up to ₹12,00,000 (effectively ₹12.75 lakh salary after standard deduction). Deductions like 80C, 80D and HRA are <b>not available</b> in this regime.</p>
+<div class="src">Source: Official Income Tax Department guidance for AY 2026-27 / Tax Year 2026-27.</div>
+</div>
+<div class="card rule-card">
+<h3>Old Tax Regime — slab rates (opt-in)</h3>
+<table><tr><th>Income slab</th><th>Rate</th></tr>
+<tr><td>Up to ₹2,50,000</td><td>Nil</td></tr>
+<tr><td>₹2,50,000 – ₹5,00,000</td><td>5%</td></tr>
+<tr><td>₹5,00,000 – ₹10,00,000</td><td>20%</td></tr>
+<tr><td>Above ₹10,00,000</td><td>30%</td></tr>
+</table>
+<p>Standard deduction: <b>₹50,000</b> for salaried/pensioners. Section 87A rebate: up to <b>₹12,500</b>, making tax nil for taxable income up to ₹5,00,000. This regime remains relevant for applicable cases and legacy/transitional periods; the application must determine the governing law and tax year before applying a deduction.</p>
+<div class="src">Source: Income Tax Department; transitional guidance for the Income-tax Act, 2025.</div>
+</div>
+<div class="card rule-card">
+<h3>Key deduction limits (Old Regime only)</h3>
+<table><tr><th>Section</th><th>What it covers</th><th>Limit</th></tr>
+<tr><td>80C</td><td>PPF, ELSS, EPF, life insurance, principal repayment on home loan</td><td>₹1,50,000</td></tr>
+<tr><td>80D</td><td>Health insurance premium (self/family)</td><td>₹25,000 (₹50,000 if parents are senior citizens)</td></tr>
+<tr><td>80CCD(1)</td><td>Employee contribution to NPS</td><td>Up to applicable ₹1.5 lakh Chapter VI-A limit</td></tr>
+<tr><td>80CCD(1B)</td><td>Additional NPS contribution</td><td>₹50,000</td></tr>
+<tr><td>80CCD(2)</td><td>Employer contribution to Tier-1 NPS</td><td>Up to 14% of salary for Central/State Govt; 10% for PSU/other employers under old regime</td></tr>
+<tr><td>24(b)</td><td>Home loan interest (self-occupied property)</td><td>₹2,00,000</td></tr>
+</table>
+<div class="src">Source: Income Tax Act, 1961.</div>
+</div>
+<div class="card rule-card">
+<h3>Employee NPS — Section 80CCD(2) in the New Tax Regime</h3>
+<p>For Tax Year 2026-27, the New Tax Regime permits a deduction for an <b>employer's contribution to the employee's Tier-1 NPS account under section 80CCD(2), up to 14% of salary</b>. Employee-paid contributions under 80CCD(1) and the additional 80CCD(1B) deduction are not available in the New Tax Regime.</p>
+<p>For the Old Tax Regime, 80CCD(1) and 80CCD(1B) may apply subject to their limits, while 80CCD(2) has a 14% ceiling for Central/State Government employers and 10% for PSU/other employers.</p>
+<div class="src">Source: Official Income Tax Department AY 2026-27 guidance and CBDT ITR validation rules.</div>
+</div>
+<div class="card rule-card">
+<h3>📜 Indian Contract Law — historical + current reference</h3>
+<p><b>Current position:</b> The principal central statute remains the <b>Indian Contract Act, 1872 (Act No. 9 of 1872)</b>. India Code lists it as enacted on 25 April 1872 and enforced from 1 September 1872. There is no separate replacement "Indian Contract Act, 2025/2026" in the current central-law record.</p>
+<p>The Act has evolved through amendments and the separation/repeal of subject areas. For example, Sale of Goods provisions were repealed from the Contract Act when the <b>Sale of Goods Act, 1930</b> became the dedicated statute, and partnership provisions were moved into the <b>Indian Partnership Act, 1932</b>. The Mediation Act, 2023 also contains amendments to the Contract Act.</p>
+<p><b>Core current topics covered:</b> proposal and acceptance; communication and revocation; consideration; capacity; free consent; coercion; undue influence; fraud; misrepresentation; mistake; lawful object and consideration; void agreements; contingent contracts; performance; quasi-contractual relations; breach and compensation; indemnity and guarantee; bailment; pledge; agency; and other surviving provisions.</p>
+<div class="src">Primary source: India Code — Indian Contract Act, 1872. <a href="https://www.indiacode.nic.in/handle/123456789/2187?view_type=browse" rel="noopener" target="_blank">Open official consolidated record</a>.</div>
+</div>
+<div class="card rule-card">
+<h3>Cess &amp; surcharge (both regimes)</h3>
+<p>Health &amp; Education Cess: <b>4%</b> on the tax amount, in all cases where tax is payable. Surcharge applies where total income exceeds ₹50 lakh, at rates up to 25% (New Regime) or 37% (Old Regime).</p>
+</div>
+</div></section>
+<section id="updates"><div class="wrap">
+<button class="back-btn" onclick="show('home')" type="button">← Back to Home</button>
+<h2>🔄 Tax Rules Update Center</h2>
+<p style="color:var(--muted);max-width:760px">Personal CA is designed to keep its tax-rule engine versioned by tax year. It checks the configured update manifest and also provides the official ICAI and Income Tax Department sources for verification. Never treat an update as valid until an official source confirms it.</p>
+<div class="card" id="updateStatusCard">
+<h3 style="margin-top:0">Current rules package</h3>
+<div id="updateStatus">Checking installed rules…</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+<button class="btn" onclick="checkForRuleUpdates(true)" type="button">Check for Updates</button>
+<button class="btn secondary" onclick="openOfficialSources()" type="button">Open Official Sources</button>
+</div></div>
+<div class="card" style="margin-top:18px">
+<h3>✅ Verified current-source snapshot</h3>
+<p style="color:var(--muted);font-size:14px">Last checked: <b>10 September 2026</b>. The list below is loaded from the server-side update package and can be replaced with a signed production manifest. It separates government tax changes from ICAI professional updates.</p>
+<div id="liveUpdates"><p class="employee-note">Loading verified updates…</p></div>
+</div>
+<div class="grid" style="margin-top:18px">
+<div class="card"><h3>🏛️ ICAI</h3><p style="color:var(--muted);font-size:14px">Use ICAI's Direct Taxes Committee and tax study/statutory update material to review professional updates.</p><a class="btn secondary" href="https://www.icai.org/post/icai-publications-direct-taxes-committee" rel="noopener" style="display:inline-block;text-decoration:none" target="_blank">Open ICAI Updates</a></div>
+<div class="card"><h3>🇮🇳 Income Tax Department</h3><p style="color:var(--muted);font-size:14px">Use the official Income Tax Department site for current tax rates, deductions, forms and notifications.</p><a class="btn secondary" href="https://www.incometax.gov.in/" rel="noopener" style="display:inline-block;text-decoration:none" target="_blank">Open Income Tax Portal</a></div>
+<div class="card"><h3>📅 Annual update</h3><p style="color:var(--muted);font-size:14px">The website automatically detects when a new tax year starts and prompts for a verified rules-package update. The calculator never silently invents new rates.</p></div>
+</div>
+<div class="card" style="margin-top:18px"><h3>🏛️ Official Income-tax Law Library</h3><p style="color:var(--muted);font-size:14px">Nivara uses an official-source coverage index for the current Indian income-tax framework. The Income-tax Act, 2025 has 536 sections and 16 schedules; the Income-tax Rules, 2026 have 333 rules and 190 forms. Earlier tax years and transitional proceedings can require the 1961 Act/1962 Rules.</p><div class="coverage-grid"><div class="coverage-item"><b>Act 2025</b><span>Sections 1–536 and Schedules 1–16 indexed.</span></div><div class="coverage-item"><b>Rules 2026</b><span>Rules 1–333 and Forms 1–190 indexed.</span></div><div class="coverage-item"><b>Legacy 1961</b><span>Earlier tax years and transitional proceedings routed to the old framework where applicable.</span></div><div class="coverage-item"><b>Official source</b><span><a href="https://www.incometax.gov.in/iec/foportal/newdownloads/income-tax-act-2025" rel="noopener" target="_blank">Income Tax Department — Income-tax Act 2025</a></span></div></div><div class="note" style="margin-top:12px"><b>Important:</b> The catalog is an index/source-router, not a reproduction of the statute. Nivara must not invent statutory wording when exact official text is not available.</div></div><div class="card" style="margin-top:18px"><h3>📚 Law &amp; compliance coverage</h3><p style="color:var(--muted);font-size:14px">The update engine is designed to track important Indian tax and compliance areas. It should activate a rule only after an official notification, Act, Rule, circular, order or other authoritative source is verified.</p><div class="coverage-grid"><div class="coverage-item"><b>Income Tax</b><span>Tax slabs, rebates, deductions, exemptions, residential status, capital gains and filing provisions.</span></div><div class="coverage-item"><b>TDS / TCS</b><span>Withholding and collection rates, thresholds, forms, due dates and notified changes.</span></div><div class="coverage-item"><b>ITR &amp; Filing</b><span>Return forms, filing deadlines, revised/updated returns, notices and filing procedures.</span></div><div class="coverage-item"><b>GST</b><span>GST registration, rates, returns, input tax credit and other taxpayer-facing updates where applicable.</span></div><div class="coverage-item"><b>Capital Gains</b><span>Rules for listed/unlisted assets, property, securities, exemptions and rate changes.</span></div><div class="coverage-item"><b>Tax Compliance</b><span>Advance tax, interest, penalties, refunds, notices, assessments and other compliance rules.</span></div><div class="coverage-item"><b>Budget &amp; Finance Acts</b><span>New provisions and amendments announced through Finance Acts and Union Budgets.</span></div><div class="coverage-item"><b>CBDT Notifications</b><span>Circulars, notifications, orders and clarifications that affect tax computation or compliance.</span></div><div class="coverage-item"><b>ICAI Guidance</b><span>ICAI technical guidance, Direct Taxes Committee updates and educational material for cross-checking.</span></div></div></div>
+<div class="note" style="margin-top:18px"><b>Important:</b> The application now has a server-side current-source snapshot. For production, connect this endpoint to a signed, reviewed rules manifest and require human verification before activating any legal-rule change. ICAI material is treated as professional guidance, while statutory rules are sourced from government authorities.</div>
+</div></section>
+<section id="stocks" style="display:none"><div class="wrap">
+<button class="back-btn" onclick="show('home')" type="button">← Back to Home</button>
+<h2>📈 Stocks AI — market research &amp; learning</h2>
+<p style="color:var(--muted);max-width:820px">Stocks AI is separate from Nivara AI. Nivara AI is for tax and CA work; Stocks AI is for market education, company research, price/volume analysis, fundamentals, risk and paper-trading practice.</p>
+<div class="note" style="max-width:820px"><b>Important:</b> Stocks AI does not provide personalized buy/sell/hold signals, entry/exit prices, portfolio allocations, or execute real-money trades. It can explain fresh market data and help a learner understand what the data means. Real investment decisions should be made with appropriate adult/professional supervision and current regulatory information.</div>
+<div class="stock-disclaimer"><b>Important:</b> This feature is educational. It is not personalised investment advice, does not guarantee returns, and does not place real-money orders. For a minor, real-money investing decisions should involve a parent/guardian and an appropriately authorised adult/professional.</div>
+<div class="stock-grid" style="margin-top:18px">
+<div class="card" style="margin-bottom:14px"><h3 style="margin-top:0">Live Market Research</h3><p style="color:var(--muted);font-size:14px">Enter a market symbol. Gemini can create a knowledge-based educational stock study. This version does not claim to have a live market-price feed, so verify current figures from official exchange/company sources.</p><div class="stock-input-row"><input id="marketSymbol" placeholder="Enter symbol (use the exchange format supported by the data provider)"/><button class="btn" onclick="loadMarketResearch()" type="button">Study with Gemini</button></div><div class="note" id="marketResearchOutput" style="margin-top:12px">No live snapshot loaded.</div></div>
+<div class="card stock-chat"><h3 style="margin-top:0">Ask Stocks AI</h3><div class="stock-chat-body" id="stocksChatBody"><div class="msg sys">Ask things like: “Explain P/E ratio”, “Compare two companies using fundamentals”, or “What is the difference between a market and limit order?”</div></div><div class="stock-input-row"><input id="stocksChatInput" onkeydown="if(event.key==='Enter')sendStocksAI()" placeholder="Ask a stock-market learning question…"/><button class="btn" onclick="sendStocksAI()" type="button">Ask</button></div></div>
+<div class="card"><h3 style="margin-top:0">What Stocks AI can teach</h3><div><span class="stock-chip" onclick="stockPrompt('Explain P/E, ROE, debt-to-equity and free cash flow in simple words.')">Fundamentals</span><span class="stock-chip" onclick="stockPrompt('How should a beginner compare two companies without making a buy or sell decision?')">Compare companies</span><span class="stock-chip" onclick="stockPrompt('Explain market, limit and stop-loss orders as concepts using a paper-trading example.')">Order types</span><span class="stock-chip" onclick="stockPrompt('Explain diversification, volatility and risk using a hypothetical portfolio.')">Risk</span></div>
+<h3 style="margin-top:22px">Paper-trading workflow</h3><ol style="color:var(--muted);line-height:1.65"><li>Choose a company to study.</li><li>Read its business model, revenue/profit trend, debt, cash flow and valuation metrics.</li><li>Write a hypothetical entry price and quantity — no real money.</li><li>Record what happened and compare the result with your original reasoning.</li></ol>
+<h3>Market information &amp; paper trading</h3><p style="color:var(--muted);font-size:14px">Stocks AI can explain fresh quotes, daily history, volume, volatility and company fundamentals when a configured market-data source is available. For learning, use a paper portfolio to record hypothetical positions and study outcomes. It will not create personalized real-money buy/sell/hold alerts or broker orders.</p>
+</div></div>
+<div class="card" style="margin-top:18px"><h3 style="margin-top:0">Stock-study checklist</h3><table class="stock-table"><tr><th>Area</th><th>Questions to learn</th></tr><tr><td>Business</td><td>What does the company sell? How does it make money? What are its main competitors?</td></tr><tr><td>Financials</td><td>Are revenue, profit and cash flow healthy? Is debt manageable?</td></tr><tr><td>Valuation</td><td>What do P/E, P/B, EV/EBITDA and dividend yield mean, and are they sensible for this sector?</td></tr><tr><td>Risk</td><td>What could make the business or its share price perform poorly?</td></tr><tr><td>Governance</td><td>Are there material regulatory, accounting or management concerns?</td></tr></table></div>
+</div></section>
+<section id="market" style="display:none"><div class="wrap">
+<button class="back-btn" onclick="show('home')" type="button">← Back to Home</button>
+<h2>Market AI — educational simulator</h2><p style="color:var(--muted)">Use hypothetical scenarios for learning only. This tool does not provide personalized investment advice or predictions.</p>
+<div class="card market-card"><div class="market-grid"><div class="market-form">
+<label>Starting amount (₹)</label><input id="marketBudget" min="100" placeholder="e.g. 100000" type="number"/>
+<label>Time horizon (years)</label><input id="marketHorizon" max="50" min="1" type="number" value="5"/>
+<label>Hypothetical annual scenario</label><select id="marketScenario"><option value="0.04">4% conservative illustration</option><option selected="" value="0.08">8% illustration</option><option value="0.12">12% illustration</option></select>
+<button class="btn" onclick="runMarketSimulation()" type="button">Run educational simulation</button>
+</div><div class="market-result" id="marketResult"><span class="risk-pill">Education mode</span><h3 style="margin:10px 0 6px">Enter values to simulate</h3><p class="market-note">Results are mathematical illustrations, not financial advice.</p></div></div></div>
+</div></section>
+<section id="rdp" style="display:none"><div class="wrap">
+<button class="back-btn" onclick="show('home')" type="button">← Back to Home</button>
+<h2>🖥️ Remote Desktop (RDP)</h2>
+<p style="color:var(--muted);max-width:820px">Create a Windows Remote Desktop connection file from Personal CA. Enter the computer/server address and username, then download the <b>.rdp</b> file and open it with the Windows Remote Desktop client.</p>
+<div class="note"><b>Security:</b> Personal CA does not store or embed your RDP password. Never put passwords, OTPs, PINs or private keys into this website. RDP connectivity also requires the destination computer to have Remote Desktop enabled and be reachable through its network/firewall.</div>
+<div class="card rdp-card"><div class="rdp-grid"><div class="rdp-form">
+<label for="rdpHost">PC / Server address</label><input autocomplete="off" id="rdpHost" placeholder="e.g. 192.168.1.50 or server.example.com"/>
+<label for="rdpPort">RDP port</label><input id="rdpPort" max="65535" min="1" type="number" value="3389"/>
+<label for="rdpUser">Username</label><input autocomplete="off" id="rdpUser" placeholder="e.g. DESKTOP\\Vansh or administrator"/>
+<label><input checked="" id="rdpFullScreen" type="checkbox"/> Start in full screen</label>
+<div class="rdp-actions"><button class="btn" onclick="generateRDP()" type="button">Generate .RDP File</button><button class="btn secondary" onclick="clearRDP()" type="button">Clear</button></div>
+<p class="rdp-note">This is an RDP <b>launcher/configuration</b> feature. A normal browser cannot itself become an RDP client. The generated file is opened by Windows Remote Desktop on a Windows device.</p>
+</div><div><h3 style="margin-top:0">Connection preview</h3><div class="rdp-preview" id="rdpPreview">Enter the server address and click “Generate .RDP File”.</div></div></div></div>
+</div></section>
+<section class="wrap" id="about-founder" style="text-align:center;padding-top:0">
+<p style="color:var(--muted);font-size:14px">Personal CA was founded by <b>Vansh Rajesh Nahata</b>.</p>
+</section>
+<section class="bottom-cta">
+<div class="wrap center">
+<h2>Ready to use Personal CA?</h2>
+<p style="color:var(--muted);font-size:16px">Sign in to use Personal CA for free.</p>
+<div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px">
+<button class="btn secondary" onclick="showLogin('nivara')" type="button">Sign In</button>
+<button class="btn" onclick="show('pricing')" type="button">Use Personal CA Free</button>
+</div>
+</div>
+</section>
+<section class="card" style="margin:0 auto 22px;max-width:1100px;border-left:4px solid #d97706;background:#fffaf0">
+<h2 style="margin-top:0">⚠️ Customer Cautions</h2>
+<ul style="color:var(--muted);line-height:1.7;margin-bottom:0">
+<li>Personal CA provides AI-assisted educational information and calculations. It is <b>not a substitute for a qualified Chartered Accountant, tax lawyer, SEBI-registered investment adviser, or other licensed professional.</b></li>
+<li>Tax laws, rules, rates, deductions, deadlines and government guidance can change. Always verify important decisions against the latest official government/ICAI sources before filing, paying tax, or acting on advice.</li>
+<li>Market AI information is for <b>educational purposes only</b>. It does not guarantee returns or predict future profits, and it does not constitute a recommendation to buy, sell, or hold any security.</li>
+<li>Investments can lose money, including the original amount invested. Past performance and illustrative simulations do not guarantee future results.</li>
+<li>Never invest money you cannot afford to lose. Consider your goals, time horizon, risk tolerance, diversification and applicable taxes before making an investment decision.</li>
+<li>Do not share passwords, OTPs, card PINs, UPI PINs, payment secrets, or other confidential credentials with the chatbot or any person claiming to represent Personal CA.</li>
+</ul>
+</section>
+<footer>Founder: <b>Vansh Rajesh Nahata</b><br/>Personal CA • AI-assisted tax planning and educational market tools — verify important decisions with qualified professionals and official sources</footer>
+<div class="ai-gate-overlay" id="aiGateOverlay">
+<div class="ai-gate-modal">
+<div class="gate-icon">🔐</div>
+<h2 id="aiGateTitle">Sign in to use AI</h2>
+<p id="aiGateMessage">Please sign in with Google and complete your profile to use the selected AI for free.</p>
+<button class="btn" id="aiGatePrimary" onclick="aiGatePrimaryAction()" type="button">Sign in</button>
+<button class="btn secondary" onclick="closeAIGate()" style="margin-top:8px" type="button">Cancel</button>
+</div>
+</div>
+<button id="chatFab" onclick="openAIAccess('nivara')" type="button">✨ Nivara AI</button>
+<div id="chatPanel"><div aria-hidden="true" class="ai-orb"></div>
+<div class="chat-head">Nivara AI <small>Personal tax intelligence · grounded in configured rules</small><button class="chat-close" onclick="toggleChat()" type="button">✕</button></div>
+<div id="chatBody">
+<div class="msg sys">This chat gives general guidance based on current Income Tax rules. It is not a substitute for a licensed CA — verify before filing.</div>
+<div class="msg bot">Namaste! I'm Nivara AI, your Personal CA intelligence. Ask me about tax slabs, deductions, HRA, NPS, or any government scheme — I'll answer using the current Tax Year 2026-27 rules.</div>
+</div>
+<div id="chatInputRow">
+<input id="chatInput" onkeydown="if(event.key==='Enter')sendChat()" placeholder="Ask about tax rules, deductions, schemes…"/>
+<button onclick="sendChat()" type="button">Send</button>
+</div>
+</div>
+<script>
+function show(id){['home','app','pricing','rules','updates','stocks','rdp'].forEach(s=>{const el=document.getElementById(s); if(el) el.style.display=(s===id?'block':'none');}); window.scrollTo({top:0,behavior:'smooth'});}
+function generateRDP(){
+  const host=document.getElementById('rdpHost').value.trim();
+  const port=Number(document.getElementById('rdpPort').value||3389);
+  const user=document.getElementById('rdpUser').value.trim();
+  const full=document.getElementById('rdpFullScreen').checked;
+  const preview=document.getElementById('rdpPreview');
+  if(!host){preview.textContent='Please enter a PC / server address.';return;}
+  if(!Number.isInteger(port)||port<1||port>65535){preview.textContent='Please enter a valid port from 1 to 65535.';return;}
+  const lines=[
+    'full address:s:'+host+':'+port,
+    'username:s:'+user,
+    'screen mode id:i:'+(full?'2':'1'),
+    'prompt for credentials:i:1',
+    'authentication level:i:2',
+    'negotiate security layer:i:1',
+    'redirectclipboard:i:1',
+    'redirectprinters:i:0',
+    'redirectsmartcards:i:0',
+    'drivestoredirect:s:'
+  ];
+  const content=lines.join('\r\n')+'\r\n';
+  preview.textContent=content;
+  const blob=new Blob([content],{type:'application/x-rdp'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='Personal_CA_RDP_Connection.rdp'; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function clearRDP(){
+  ['rdpHost','rdpUser'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const port=document.getElementById('rdpPort');if(port)port.value='3389';
+  const fs=document.getElementById('rdpFullScreen');if(fs)fs.checked=true;
+  const p=document.getElementById('rdpPreview');if(p)p.textContent='Enter the server address and click “Generate .RDP File”.';
+}
+
+
+async function loadGoogleButton(){
+  const box=document.getElementById('googleButton');
+  if(!box) return;
+  try{
+    const r=await fetch(API_BASE+'/api/config',{cache:'no-store'});
+    if(!r.ok) throw new Error('config unavailable');
+    const cfg=await r.json();
+    if(!cfg.googleClientId){
+      box.innerHTML='<div class="note">Google Sign-In is not configured on the backend yet. You can still use Email Sign-In below.</div>';
+      return;
+    }
+    if(!window.google){
+      box.innerHTML='<div class="note">Google Sign-In is loading. Email Sign-In is available below.</div>';
+      return;
+    }
+    google.accounts.id.initialize({client_id:cfg.googleClientId,callback:handleGoogleCredential,auto_select:false});
+    google.accounts.id.renderButton(box,{theme:'outline',size:'large',text:'signin_with',shape:'rectangular',width:320});
+  }catch(e){
+    box.innerHTML='<div class="note">Google Sign-In is temporarily unavailable. Use Email Sign-In below — no OTP is sent.</div>';
+  }
+}
+
+async function handleGoogleCredential(response){
+  clearAuthError();
+  try{
+    const r=await fetch(API_BASE+'/api/auth/google',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:response.credential})});
+    const data=await readApiResponse(r);
+    currentUser=data;
+    localStorage.setItem(LOCAL_ACCOUNT_KEY,JSON.stringify(currentUser));
+    authMessage(`Signed in as ${data.name||data.email}.`,true);
+    openRequestedAI();
+  }catch(e){ authError(e.message||'Google sign-in failed.'); }
+}
+
+function closeAIGate(){document.getElementById('aiGateOverlay')?.classList.remove('open');}
+function aiName(kind){return kind==='stocks'?'Stocks AI':'Nivara AI';}
+function aiGatePrimaryAction(){closeAIGate(); openAIAccess(pendingAI||'stocks');}
+
+function saveLocalAccount(user){
+  localStorage.setItem(LOCAL_ACCOUNT_KEY,JSON.stringify(user));
+  localStorage.setItem('pcaSignedIn','1');
+}
+function readLocalAccount(){
+  try{return JSON.parse(localStorage.getItem(LOCAL_ACCOUNT_KEY)||'null');}catch(e){return null;}
+}
+
+async function emailSignIn(){
+  clearAuthError();
+  const input=document.getElementById('emailSignIn');
+  const email=(input?.value||'').trim().toLowerCase();
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    authError('Please enter a valid email address.');
+    input?.focus();
+    return;
+  }
+  const button=document.querySelector('.email-login-box .btn');
+  if(button){button.disabled=true;button.textContent='Signing in…';}
+  try{
+    const r=await fetch(API_BASE+'/api/auth/email',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({email})});
+    const data=await readApiResponse(r);
+    currentUser={...data,provider:'email_project_signin'};
+    saveLocalAccount(currentUser);
+    authMessage(`Okay — ${email} is signed in. No OTP was sent and no email was sent. You can use Personal CA now.`,true);
+    openRequestedAI();
+  }catch(e){
+    authError(e.message||'Email sign-in failed. Please try again.');
+  }finally{
+    if(button){button.disabled=false;button.textContent='Continue with Email';}
+  }
+}
+
+function authMessage(message, ok=false){
+  const el=document.getElementById('authStatus');
+  if(!el)return;
+  el.style.display='block';
+  el.className='note'+(ok?' ok':'');
+  el.textContent=message;
+}
+function authError(message){
+  const el=document.getElementById('authError');
+  if(!el)return;
+  el.textContent=message;
+  el.style.display='block';
+}
+function clearAuthError(){
+  const e=document.getElementById('authError'); if(e){e.textContent='';e.style.display='none';}
+}
+
+function showLogin(kind){
+  pendingAI=kind||pendingAI||'nivara';
+  show('app');
+  document.getElementById('login').classList.remove('hidden');
+  document.getElementById('profileGate').classList.add('hidden');
+  document.getElementById('uploader').classList.add('hidden');
+  document.getElementById('review').classList.add('hidden');
+  document.getElementById('st1').classList.add('active');
+  document.getElementById('st2').classList.remove('active');
+  document.getElementById('st3').classList.remove('active');
+  clearAuthError();
+  const status=document.getElementById('authStatus');
+  if(status){status.style.display='block';status.className='note';status.textContent=`Sign in to continue to ${aiName(pendingAI)}. Google or email is available. Email sign-in sends nothing.`;}
+  document.getElementById('emailSignIn')?.focus();
+}
+
+function openAIAccess(kind){
+  pendingAI=kind;
+  if(!currentUser){ showLogin(kind); return; }
+  openRequestedAI();
+}
+
+function showProfileGate(){
+  show('app');
+  document.getElementById('login').classList.add('hidden');
+  document.getElementById('uploader').classList.add('hidden');
+  document.getElementById('review').classList.add('hidden');
+  document.getElementById('profileGate').classList.remove('hidden');
+  document.getElementById('profileError').style.display='none';
+}
+
+function openRequestedAI(){
+  const kind=pendingAI||'nivara';
+  pendingAI=null;
+  closeAIGate();
+  if(kind==='stocks'){
+    show('stocks');
+    toggleStatusMenuClose();
+  }else{
+    show('home');
+    document.getElementById('chatPanel').classList.add('open');
+  }
+}
+
+function saveProfileAndContinue(){
+  if(!currentUser){showLogin(pendingAI||'nivara');return;}
+  const dob=document.getElementById('profileDob')?.value||'';
+  const gender=document.getElementById('profileGender')?.value||'';
+  if(!dob || !gender){
+    const e=document.getElementById('profileError');
+    e.textContent='Please enter your date of birth and select a gender.';
+    e.style.display='block';
+    return;
+  }
+  currentUser.dateOfBirth=dob;
+  currentUser.gender=gender;
+  currentUser.profileCompleted=true;
+  saveLocalAccount(currentUser);
+  fetch(API_BASE+'/api/auth/profile',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({dateOfBirth:dob,gender})})
+    .then(async r=>{if(!r.ok){const d=await readApiResponse(r);return d;}})
+    .catch(()=>{});
+  openRequestedAI();
+}
+
+function ensureTaxProfile(){
+  if(currentUser?.profileCompleted){
+    show('app');
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById('profileGate').classList.add('hidden');
+    document.getElementById('review').classList.add('hidden');
+    document.getElementById('uploader').classList.remove('hidden');
+    return;
+  }
+  if(currentUser){showProfileGate();return;}
+  showLogin('nivara');
+}
+
+async function restoreSession(){
+  try{
+    const r=await fetch(API_BASE+'/api/auth/me',{cache:'no-store',credentials:'include'});
+    if(r.ok){
+      const data=await r.json();
+      if(data.signedIn){currentUser=data;saveLocalAccount(currentUser);return;}
+    }
+  }catch(e){}
+  const local=readLocalAccount();
+  if(local) currentUser=local;
+}
+
+async function logoutPersonalCA(){
+  await fetch(API_BASE+'/api/auth/logout',{method:'POST'}).catch(()=>{});
+  currentUser=null;
+  localStorage.removeItem(LOCAL_ACCOUNT_KEY);
+  localStorage.removeItem('pcaSignedIn');
+  location.reload();
+}
+
+const RULES_ENGINE_VERSION = '2026.09.10';
+const RULES_TAX_YEAR = '2026-27';
+// Set this to your own HTTPS JSON manifest when you deploy the site.
+// Example manifest: {"version":"2027.1","taxYear":"2027-28","rules":{...}}
+const RULES_UPDATE_URL = '';
+const OFFICIAL_SOURCES = {
+  icaI: 'https://www.icai.org/post/icai-publications-direct-taxes-committee',
+  incomeTax: 'https://www.incometax.gov.in/',
+  rates: 'https://www.incometaxindia.gov.in/tax-rates',
+  deductions: 'https://www.incometaxindia.gov.in/w/deductions'
+};
+
+function expectedTaxYear(){
+  const now=new Date();
+  const y=now.getFullYear();
+  return now.getMonth()>=3 ? `${y}-${String(y+1).slice(-2)}` : `${y-1}-${String(y).slice(-2)}`;
+}
+function renderUpdateStatus(message, ok=true){
+  const el=document.getElementById('updateStatus'); if(!el)return;
+  el.innerHTML=`<div class="note ${ok?'ok':''}"><b>Installed:</b> Tax Year ${RULES_TAX_YEAR} · Rules Engine ${RULES_ENGINE_VERSION}<br>${message}</div>`;
+}
+
+function runMarketSimulation(){
+  const budget=Number(document.getElementById('marketBudget').value);
+  const years=Number(document.getElementById('marketHorizon').value);
+  const rate=Number(document.getElementById('marketScenario').value);
+  const box=document.getElementById('marketResult');
+  if(!Number.isFinite(budget)||budget<100){box.innerHTML='<span class="risk-pill">Education mode</span><h3 style="margin:10px 0 6px">Enter a valid amount</h3><p class="market-note">Use ₹100 or more for the hypothetical example.</p>';return;}
+  const future=budget*Math.pow(1+rate,years);
+  const change=future-budget;
+  box.innerHTML='<span class="risk-pill">Hypothetical only</span><h3 style="margin:10px 0 6px">Illustrative value: ₹'+Math.round(future).toLocaleString('en-IN')+'</h3><p class="market-note">Starting amount: ₹'+Math.round(budget).toLocaleString('en-IN')+'<br>Illustrative change: ₹'+Math.round(change).toLocaleString('en-IN')+'<br>Assumed annual rate: '+(rate*100).toFixed(0)+'% for '+years+' year(s).</p><p class="market-note"><b>This is not a profit prediction.</b> Real investments can lose money, and past or assumed returns do not guarantee future results.</p>';
+}
+
+let selectedFiles=[];
+function listFiles(){
+  const input=document.getElementById('files'), box=document.getElementById('filelist');
+  selectedFiles=Array.from(input?.files||[]);
+  box.innerHTML=selectedFiles.length ? selectedFiles.map(f=>`<div class="file">${escapeHtml(f.name)} <span class="src">${Math.round(f.size/1024)} KB</span></div>`).join('') : '';
+}
+function review(){ if(!currentUser){ showLogin('nivara'); return; } if(!currentUser.profileCompleted){ showProfileGate(); return; } fetch(API_BASE+'/api/logs/event',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event:'analysis_completed',detail:'Personal tax analysis completed'})}).catch(()=>{});
+  const income=Math.max(0,Number(document.getElementById('income').value)||0);
+  const age=Number(document.getElementById('age').value)||0;
+  const employment=document.getElementById('employment').value;
+  if(!income){ alert('Enter annual gross income before analysis.'); return; }
+  const c80=Math.min(Math.max(0,Number(document.getElementById('c80').value)||0),150000);
+  const d80=Math.min(Math.max(0,Number(document.getElementById('d80').value)||0),25000);
+  const nps=Math.min(Math.max(0,Number(document.getElementById('nps').value)||0),50000);
+  const loan=Math.min(Math.max(0,Number(document.getElementById('loan').value)||0),200000);
+  const slab=(taxable,regime)=>{const bands=regime==='new'?[[400000,0],[800000,.05],[1200000,.10],[1600000,.15],[2000000,.20],[2400000,.25],[Infinity,.30]]:[[250000,0],[500000,.05],[1000000,.20],[Infinity,.30]];let prev=0,t=0;for(const [cap,rate] of bands){const part=Math.max(0,Math.min(taxable,cap)-prev);t+=part*rate;prev=cap;if(taxable<=cap)break;}return t;};
+  const newTaxable=Math.max(0,income-(employment==='Salaried'||employment==='Retired / Pensioner'?75000:0));
+  const oldDed=c80+d80+nps+loan+(employment==='Salaried'||employment==='Retired / Pensioner'?50000:0);
+  const oldTaxable=Math.max(0,income-oldDed);
+  let nt=slab(newTaxable,'new'); if(newTaxable<=1200000) nt=0; nt*=1.04;
+  let ot=slab(oldTaxable,'old'); if(oldTaxable<=500000) ot=0; ot*=1.04;
+  const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+  document.getElementById('count').textContent=selectedFiles.length; document.getElementById('profileSummary').innerHTML=`<b>Customer profile used in analysis:</b> DOB ${escapeHtml(currentUser.dateOfBirth||'provided')} · Gender ${escapeHtml(currentUser.gender||'provided')}<br><span style="font-size:12px;color:var(--muted)">Nivara AI can use this verified profile when relevant to tax eligibility; it does not infer additional sensitive attributes.</span>`;
+  document.getElementById('calcOutput').innerHTML=`<div class="result-hero"><small>Estimated annual tax liability (planning estimate)</small><div class="amt">${fmt(Math.min(nt,ot))}</div><p>${nt<=ot?'New':'Old'} regime is lower on the entered information. This estimate does not cover every income type, exemption, surcharge, marginal relief, or legal exception.</p></div><table><tr><th>Regime</th><th>Taxable income used</th><th>Estimated tax incl. 4% cess</th></tr><tr><td>New</td><td>${fmt(newTaxable)}</td><td>${fmt(nt)}</td></tr><tr><td>Old</td><td>${fmt(oldTaxable)}</td><td>${fmt(ot)}</td></tr></table>`;
+  document.getElementById('schemeOutput').innerHTML='<span class="pill">PPF / EPF / ELSS — subject to eligibility</span><span class="pill">NPS — only where the applicable section/regime permits</span><span class="pill">Health insurance / 80D — subject to conditions</span>';
+  document.getElementById('uploader').classList.add('hidden'); document.getElementById('review').classList.remove('hidden'); document.getElementById('st2').classList.remove('active'); document.getElementById('st3').classList.add('active');
+}
+function backToUploader(){document.getElementById('review').classList.add('hidden');document.getElementById('uploader').classList.remove('hidden');document.getElementById('st3').classList.remove('active');document.getElementById('st2').classList.add('active');}
+function backToLogin(){document.getElementById('uploader').classList.add('hidden');document.getElementById('profileGate').classList.add('hidden');document.getElementById('login').classList.remove('hidden');}
+let ACTIVE_RULES = {};
+
+function calculateEmployeeNps(){
+  const regime=document.getElementById('employeeRegime').value;
+  const salary=Math.max(0,Number(document.getElementById('employeeSalary').value)||0);
+  const nps1=Math.max(0,Number(document.getElementById('employeeNps1').value)||0);
+  const nps1b=Math.max(0,Number(document.getElementById('employeeNps1b').value)||0);
+  const nps2=Math.max(0,Number(document.getElementById('employeeNps2').value)||0);
+  const employer=document.getElementById('employeeEmployer').value;
+  const box=document.getElementById('employeeResult');
+  if(!salary){box.innerHTML='<span class="rule-tag">Employee NPS checker</span><h3 style="margin:10px 0 6px">Enter salary</h3><p class="employee-note">Enter annual basic salary plus eligible DA used for the 80CCD(2) calculation.</p>';return;}
+  const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+  let d1=0,d1b=0,d2=0;
+  if(regime==='new'){
+    d2=Math.min(nps2,salary*0.14);
+  }else{
+    d1=Math.min(nps1,150000);
+    d1b=Math.min(nps1b,50000);
+    const cap=employer==='govt'?0.14:0.10;
+    d2=Math.min(nps2,salary*cap);
+  }
+  const total=d1+d1b+d2;
+  const ignored1=Math.max(0,nps1-d1), ignored1b=Math.max(0,nps1b-d1b), ignored2=Math.max(0,nps2-d2);
+  box.innerHTML=`<span class="rule-tag">${regime==='new'?'New Tax Regime':'Old Tax Regime'}</span><h3 style="margin:10px 0 6px">Eligible NPS-related deduction: <span class="big">${fmt(total)}</span></h3><table><tr><th>Section</th><th>Contribution</th><th>Eligible</th></tr><tr><td>80CCD(1)</td><td>${fmt(nps1)}</td><td>${fmt(d1)}</td></tr><tr><td>80CCD(1B)</td><td>${fmt(nps1b)}</td><td>${fmt(d1b)}</td></tr><tr><td>80CCD(2)</td><td>${fmt(nps2)}</td><td>${fmt(d2)}</td></tr></table><p class="employee-note">${regime==='new'?'New regime: 80CCD(1) and 80CCD(1B) are not claimable. Employer 80CCD(2) is capped at 14% of salary for Tax Year 2026-27.':'Old regime: 80CCD(1) is subject to the applicable Chapter VI-A overall limit, 80CCD(1B) has a ₹50,000 additional limit, and 80CCD(2) is capped at 14% for Central/State Government employers or 10% for PSU/other employers.'}</p>${ignored1||ignored1b||ignored2?`<p class="employee-note"><b>Amount above the applicable cap:</b> ${fmt(ignored1+ignored1b+ignored2)}. This amount is not included in the result.</p>`:''}<p class="src">Source: Income Tax Department guidance and AY 2026-27 ITR validation rules.</p>`;
+}
+
+
+async function loadVerifiedUpdates(){
+  const box=document.getElementById('liveUpdates'); if(!box)return;
+  try{
+    const r=await fetch(API_BASE+'/api/updates',{cache:'no-store'});
+    if(!r.ok)throw new Error('updates unavailable');
+    const d=await r.json();
+    const make=(title,items)=>`<h4 style="margin:16px 0 8px">${title}</h4>`+(Array.isArray(items)?items:[]).map(x=>`<div style="padding:10px 0;border-top:1px solid var(--border)"><b>${escapeHtml(x.date)} — ${escapeHtml(x.title)}</b><p style="margin:5px 0;color:var(--muted);font-size:14px">${escapeHtml(x.detail)}</p><a href="${x.url}" target="_blank" rel="noopener" class="src">${escapeHtml(x.source)} → official source</a></div>`).join('');
+    box.innerHTML=make('🇮🇳 Income Tax Department / CBDT',d.incomeTax||'')+make('🏛️ ICAI professional updates',d.icai||'')+`<p class="note" style="margin-top:14px"><b>Coverage note:</b> This is a verified snapshot, not a promise that every circular, notification, court judgment, GST update or ICAI publication is automatically embedded. Important filing decisions should be checked against the current official source.</p>`;
+  }catch(e){ box.innerHTML='<p class="note">The live update snapshot could not be loaded. The installed rules remain active; use the official-source buttons below to verify current changes.</p>'; }
+}
+
+async function checkForRuleUpdates(manual=false){
+  const current=expectedTaxYear();
+  renderUpdateStatus(current!==RULES_TAX_YEAR ? `A new tax year (${current}) has started. A verified rules package should be published before calculations are switched.` : 'Rules package matches the current tax-year calendar.');
+  if(!RULES_UPDATE_URL){
+    if(manual) alert('No remote rules manifest is configured yet. The site is ready for automatic updates once you connect your own HTTPS rules-manifest.json endpoint. Official sources are provided in the Update Center.');
+    return;
+  }
+  try{
+    const r=await fetch(RULES_UPDATE_URL,{cache:'no-store'});
+    if(!r.ok)throw new Error('manifest unavailable');
+    const m=await r.json();
+    if(!m.version||!m.taxYear)throw new Error('invalid manifest');
+    if(!m.rules || !m.rules.newRegime || !m.rules.oldRegime || !m.rules.deductions) throw new Error('incomplete rules');
+    if(m.coverage && !Array.isArray(m.coverage)) throw new Error('invalid coverage metadata');
+    if(m.taxYear===RULES_TAX_YEAR){
+      ACTIVE_RULES = m.rules;
+      localStorage.setItem('pca_active_rules',JSON.stringify({version:m.version,taxYear:m.taxYear,rules:m.rules}));
+      renderUpdateStatus(`Verified remote package ${m.version} is active for Tax Year ${m.taxYear}.`);
+      return;
+    }
+    renderUpdateStatus(`Remote package found for Tax Year ${m.taxYear}. It is not activated until the website enters that tax year.`,false);
+  }catch(e){
+    renderUpdateStatus('Remote update check could not be completed. The installed verified rules remain active.',false);
+  }
+}
+function openOfficialSources(){
+  window.open(OFFICIAL_SOURCES.icaI,'_blank','noopener');
+  window.open(OFFICIAL_SOURCES.incomeTax,'_blank','noopener');
+}
+window.addEventListener('load',()=>{
+  try{const c=JSON.parse(localStorage.getItem('pca_active_rules')||'null'); if(c && c.taxYear===RULES_TAX_YEAR && c.rules) ACTIVE_RULES=c.rules;}catch(e){}
+  loadVerifiedUpdates();
+  checkForRuleUpdates(false);
+  const last=Number(localStorage.getItem('pca_rules_check')||0);
+  if(Date.now()-last>86400000){localStorage.setItem('pca_rules_check',String(Date.now()));}
+});
+
+let chatHistory = [];
+async function readApiResponse(response){
+  const raw=await response.text();
+  let data={};
+  try{ data=raw?JSON.parse(raw):{}; }catch(e){ data={}; }
+  if(!response.ok){
+    const detail=typeof data.detail==='string'?data.detail:
+      (Array.isArray(data.detail)?data.detail.map(x=>x.msg||String(x)).join('; '):'');
+    throw new Error(detail||data.error||data.message||`Request failed (HTTP ${response.status}).`);
+  }
+  return data;
+}
+function toggleChat(){ document.getElementById('chatPanel').classList.toggle('open'); }
+async function sendChat(){
+  if(!currentUser || !currentUser.profileCompleted){openAIAccess('nivara');return;}
+  const input=document.getElementById('chatInput'); const text=input.value.trim(); if(!text)return;
+  const body=document.getElementById('chatBody');
+  body.insertAdjacentHTML('beforeend',`<div class="msg user">${escapeHtml(text)}</div>`); input.value=''; body.scrollTop=body.scrollHeight;
+  chatHistory.push({role:'user',content:text});
+  const typingEl=document.createElement('div'); typingEl.className='typing'; typingEl.innerHTML='<span></span><span></span><span></span>'; body.appendChild(typingEl); body.scrollTop=body.scrollHeight;
+  try{
+    const r=await fetch(API_BASE+'/api/ai/chat',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:chatHistory})});
+    const data=await readApiResponse(r);
+    typingEl.remove(); const reply=data.reply||'I could not generate an answer.'; body.insertAdjacentHTML('beforeend',`<div class="msg bot">${escapeHtml(reply)}</div>`); chatHistory.push({role:'assistant',content:reply});
+  }catch(e){
+    typingEl.remove(); body.insertAdjacentHTML('beforeend',`<div class="msg bot">${escapeHtml(e.message||'Your CA AI is temporarily unavailable. Please try again.')}</div>`);
+  }
+  body.scrollTop=body.scrollHeight;
+}
+let stocksHistory=[];
+async function loadMarketResearch(){
+  const symbol=document.getElementById('marketSymbol').value.trim();
+  const box=document.getElementById('marketResearchOutput');
+  if(!symbol){box.textContent='Enter a stock symbol or company name first.';return;}
+  box.textContent='Asking the AI for an educational stock study…';
+  try{
+    const r=await fetch(API_BASE+'/api/stocks-ai/research',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({symbol})});
+    const d=await readApiResponse(r);
+    box.innerHTML='<b>'+escapeHtml(d.symbol||symbol)+'</b><br><span class="src">'+escapeHtml(d.source||'AI provider')+' · '+new Date((d.retrievedAt||0)*1000).toLocaleString()+'</span><div style="margin-top:10px;white-space:pre-wrap">'+escapeHtml(d.reply||'No study returned.')+'</div>';
+  }catch(e){box.textContent=e.message||'Gemini stock research unavailable.';}
+}
+
+function stockPrompt(text){document.getElementById('stocksChatInput').value=text;sendStocksAI();}
+async function sendStocksAI(){
+  if(!currentUser || !currentUser.profileCompleted){openAIAccess('stocks');return;}
+  const input=document.getElementById('stocksChatInput'); const text=input.value.trim(); if(!text)return;
+  const body=document.getElementById('stocksChatBody');
+  body.insertAdjacentHTML('beforeend',`<div class="msg user">${escapeHtml(text)}</div>`); input.value=''; body.scrollTop=body.scrollHeight;
+  stocksHistory.push({role:'user',content:text});
+  const typing=document.createElement('div'); typing.className='typing'; typing.innerHTML='<span></span><span></span><span></span>'; body.appendChild(typing); body.scrollTop=body.scrollHeight;
+  try{
+    const r=await fetch(API_BASE+'/api/stocks-ai/chat',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:stocksHistory})});
+    const data=await readApiResponse(r);
+    typing.remove(); const reply=data.reply||'I could not generate an answer.'; body.insertAdjacentHTML('beforeend',`<div class="msg bot">${escapeHtml(reply)}</div>`); stocksHistory.push({role:'assistant',content:reply});
+  }catch(e){typing.remove(); body.insertAdjacentHTML('beforeend',`<div class="msg bot">${escapeHtml(e.message||'Stocks AI is temporarily unavailable.')}</div>`);}
+  body.scrollTop=body.scrollHeight;
+}
+
+async function refreshStatusMenu(){
+  const box=document.getElementById('statusMenuContent'); if(!box)return;
+  try{
+    const r=await fetch(API_BASE+'/api/status',{cache:'no-store'}); const d=await r.json();
+    const plan=d.plan||{}; const upd=d.updates||{};
+    const exp='No expiry — free edition';
+    box.innerHTML=`<div class="status-row"><b>Implemented logs</b><span>${d.logCount||0} activity log entries recorded.</span></div><div class="status-row"><b>Rules engine</b><span>Tax Year ${escapeHtml(d.rules.taxYear)} · Version ${escapeHtml(d.rules.version)}</span></div><div class="status-row"><b>Update status</b><span>${escapeHtml(upd.message||'Check Update Center')}</span></div><div class="status-row"><b>Plan</b><span>FREE · No subscription required</span></div><div class="status-row"><b>Account</b><span>${d.user?escapeHtml(d.user.email):'Not signed in'}</span></div>`;
+  }catch(e){box.innerHTML='<div class="status-row"><b>Status unavailable</b><span>Start the Python server to load live status.</span></div>';}
+}
+function toggleStatusMenu(){const m=document.getElementById('statusMenu');m.classList.toggle('open');if(m.classList.contains('open'))refreshStatusMenu();}
+function toggleStatusMenuClose(){const m=document.getElementById('statusMenu');if(m)m.classList.remove('open');}
+function toggleHowItWorks(){document.getElementById('howItWorks').classList.toggle('open');}
+function escapeHtml(str){return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');}
+window.addEventListener('DOMContentLoaded',()=>{ loadGoogleButton(); restoreSession(); });
+
+window.addEventListener('error',function(e){
+  const box=document.getElementById('statusMenuContent');
+  if(box && e && e.message){ box.dataset.lastError=e.message; }
+});
+window.addEventListener('unhandledrejection',function(e){
+  const box=document.getElementById('statusMenuContent');
+  if(box && e && e.reason){ box.dataset.lastError=String(e.reason.message||e.reason); }
+});
+</script>
+</body></html>
